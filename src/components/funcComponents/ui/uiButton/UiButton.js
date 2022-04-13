@@ -11,7 +11,7 @@ function UiButton(props) {
     }
     return (
 
-        <button className={props.cssCustom} onClick={clickBtn}>
+        <button style={props.style} className={props.cssCustom} onClick={clickBtn}>
             {props.nameBtn}
             {props.children}
         </button>
