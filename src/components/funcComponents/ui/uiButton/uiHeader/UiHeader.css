@@ -1,16 +1,31 @@
 header{
-    height: 90px;
-    background-color: rgb(88, 88, 196);
-    display: flex;
-    justify-content: space-between;
-    padding: 0 24px;
-    box-shadow: 0 4px 4px 0 rgb(161 161 161 / 66%);
+        height: 90px;
+        background-color: rgb(88, 88, 196);
+        display: flex;
+        justify-content: space-around;
+        box-shadow: 0 4px 4px 0 rgb(55 50 50 / 66%);
+        position: fixed;
+        border-radius: 3px;
+        width: 100%;
+        color: white
 }
 header ul{
     display: flex;
     align-items: center;
 
 }
+.account_info{
+    display: flex;
+    align-items: center;
+}
+
+.account_info p{
+    margin-left: 16px;
+    list-style: none;
+    cursor: pointer;
+    font-size: 22px;
+}
+
 header ul li{
     margin-left: 16px;
     list-style: none;
