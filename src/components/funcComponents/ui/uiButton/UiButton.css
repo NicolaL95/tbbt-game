@@ -7,6 +7,11 @@
     border-style: none;
     cursor: pointer;
 }
+.btnActive {
+    transform: scale(1.4);
+    border: 3px solid white;
+    border-radius: 50%;
+}
 .btn_gameplay{
     width: 70px;
 }
