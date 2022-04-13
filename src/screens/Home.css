@@ -8,8 +8,17 @@
         height: 600px;
         background-repeat: no-repeat;
         background-size: cover;
-        }
+}
+.box_game_advertising{
+        display: flex;
+        justify-content: space-between;
+}
 
-.container{
-    background-color: white;
+@media all and (max-width :768px){
+        .box_game_advertising{
+                flex-direction: column;
+        }
+        .game_info{
+                width: 100%;
+        }
 }

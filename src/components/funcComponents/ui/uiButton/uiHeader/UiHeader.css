@@ -36,3 +36,11 @@ header img{
     height: 100%;
     width: auto;
 }
+
+@media all and (max-width :768px){
+    header ul{
+        display: none;
+        /* align-items: center; */
+    
+    }
+}
