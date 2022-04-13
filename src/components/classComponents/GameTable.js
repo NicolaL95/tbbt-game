@@ -83,27 +83,27 @@ class GameTable extends Component {
                         <p> {this.state.sUserScore}</p>
                         <div className="button_container">
                             <UiButton
-                                children={<img src={carta} alt="" />}
+                                children={<img className="btn_gameplay" src={carta} alt="" />}
                                 id={0}
                                 callback={this.playGame}
                             />
                             <UiButton
-                                children={<img src={forbici} alt="" />}
+                                children={<img className="btn_gameplay" src={forbici} alt="" />}
                                 id={1}
                                 callback={this.playGame}
                             />
                             <UiButton
-                                children={<img src={sasso} alt="" />}
+                                children={<img className="btn_gameplay" src={sasso} alt="" />}
                                 id={2}
                                 callback={this.playGame}
                             />
                             <UiButton
-                                children={<img src={lizard} alt="" />}
+                                children={<img className="btn_gameplay" src={lizard} alt="" />}
                                 id={3}
                                 callback={this.playGame}
                             />
                             <UiButton
-                                children={<img src={spock} alt="" />}
+                                children={<img className="btn_gameplay" src={spock} alt="" />}
                                 id={4}
                                 callback={this.playGame}
                             />
@@ -116,24 +116,24 @@ class GameTable extends Component {
 
                         <div className="button_container">
                             <UiButton
-                                children={<img src={carta} alt="" />}
+                                children={<img className="btn_gameplay" src={carta} alt="" />}
 
                             />
                             <UiButton
-                                children={<img src={forbici} alt="" />}
+                                children={<img className="btn_gameplay" src={forbici} alt="" />}
 
                             />
                             <UiButton
-                                children={<img src={sasso} alt="" />}
+                                children={<img className="btn_gameplay" src={sasso} alt="" />}
 
 
                             />
                             <UiButton
-                                children={<img src={lizard} alt="" />}
+                                children={<img className="btn_gameplay" src={lizard} alt="" />}
 
                             />
                             <UiButton
-                                children={<img src={spock} alt="" />}
+                                children={<img className="btn_gameplay" src={spock} alt="" />}
 
                             />
                         </div>

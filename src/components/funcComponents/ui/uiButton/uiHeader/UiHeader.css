@@ -7,12 +7,15 @@ header{
         position: fixed;
         border-radius: 3px;
         width: 100%;
-        color: white
+        color: white;
+        padding:16px
+}
+header picture{
+    max-width: 20%;
 }
 header ul{
     display: flex;
     align-items: center;
-
 }
 .account_info{
     display: flex;
@@ -42,5 +45,14 @@ header img{
         display: none;
         /* align-items: center; */
     
+    }
+}
+
+@media all and (max-width :970px){
+    header ul li{
+       font-size: 1rem;
+    }
+    .account_info p{
+        font-size: 1rem;
     }
 }

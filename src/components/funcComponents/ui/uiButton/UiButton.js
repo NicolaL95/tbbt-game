@@ -27,7 +27,7 @@ UiButton.defaultProps = {
 // propTypes 
 UiButton.propTypes = {
     nameBtn: PropTypes.string,
-    callback: PropTypes.func.isRequired,
+    callback: PropTypes.func,
     cssCustom: PropTypes.string
 }
 
