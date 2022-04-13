@@ -8,6 +8,22 @@
 
 .w-50{
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.w-50 p{
+    color: white;
+    font-size: 30px;
+}
+
+.mb{
+        margin-bottom: 10px;
+}
+
+.pb_7{
+    padding-bottom: 7px;
 }
 
 .img-set{
@@ -17,6 +33,8 @@
 
 .button_container{
     display: flex;
+    padding: 0 40px 10px 40px;
+    gap: 10px;
 }
 
 .button_container .btnDefault{

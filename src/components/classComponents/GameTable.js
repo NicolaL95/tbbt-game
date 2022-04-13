@@ -17,6 +17,9 @@ import forbici from "../../assets/images/forbici.png"
 import lizard from "../../assets/images/lizard.png"
 import spock from "../../assets/images/spock.png"
 
+//audio
+import game_audio from "../../assets/audio/game_audio.mp3"
+
 // import utils 
 import { calcMatch } from '../../utils/utils'
 
@@ -44,32 +47,36 @@ class GameTable extends Component {
 
     // funzione play game 
     playGame = (user_score) => {
+        new Audio(game_audio).play();
+        /*   setTimeout(waitAudio(), 2000) */
+
         let nOfGames = localStorage.getItem("nOfGames")
         let userScore = localStorage.getItem("userScore")
         let cpuScore = localStorage.getItem("cpuScore")
 
+        const timerid = setTimeout(() => {
+            let cpu_score = Math.floor(Math.random() * 5);
+            let result = calcMatch(user_score, cpu_score)
 
-        let cpu_score = Math.floor(Math.random() * 5);
-        let result = calcMatch(user_score, cpu_score)
-
-        if (result.vinceUser == true) {
-            userScore++;
-            localStorage.setItem("userScore", userScore)
+            if (result.vinceUser == true) {
+                userScore++;
+                localStorage.setItem("userScore", userScore)
+            }
+            else if (result.vinceCpu == true) {
+                cpuScore++;
+                localStorage.setItem("cpuScore", cpuScore)
+            }
+            nOfGames++;
+            localStorage.setItem("nOfGames", nOfGames);
+            this.setState({
+                sNumOfGames: nOfGames,
+                sUserScore: userScore,
+                sCpuSCore: cpuScore
+            })
+            console.log(result);
         }
-        else if (result.vinceCpu == true) {
-            cpuScore++;
-            localStorage.setItem("cpuScore", cpuScore)
-        }
-        nOfGames++;
-        localStorage.setItem("nOfGames", nOfGames);
+            , 2000);
 
-        this.setState({
-            sNumOfGames: nOfGames,
-            sUserScore: userScore,
-            sCpuSCore: cpuScore
-        })
-
-        console.log(result);
     }
     render() {
         return (
@@ -78,12 +85,12 @@ class GameTable extends Component {
                 <div className="game_table_container">
 
                     <div className="user_box w-50">
-                        <img className="img-set" src={geology_user} alt="" />
+                        <img className="img-set pb_7" src={geology_user} alt="" />
                         <p> Studente di Geologia(Tu)</p>
-                        <p> {this.state.sUserScore}</p>
+                        <p className="mb"> {this.state.sUserScore}</p>
                         <div className="button_container">
                             <UiButton
-                                children={<img className="btn_gameplay" src={carta} alt="" />}
+                                children={<img className={this.state.hasbluff ? 'bluffborder' : 'nobluff'} src={carta} alt="" />}
                                 id={0}
                                 callback={this.playGame}
                             />
@@ -112,7 +119,7 @@ class GameTable extends Component {
                     <div className="cpu_box w-50">
                         <img className="img-set" src={sheldon_cpu} alt="" />
                         <p>Sheldon</p>
-                        <p>{this.state.sCpuSCore}</p>
+                        <p className="mb">{this.state.sCpuSCore}</p>
 
                         <div className="button_container">
                             <UiButton
