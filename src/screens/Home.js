@@ -22,19 +22,6 @@ function Home() {
           <GameTable />
           <Advertising />
         </div>
-        <div className="container">
-          <h1>Ti ringraziamo per aver acquistato dal nostro shop!</h1>
-          <h2>Sheldon vuole sfidarti al suo gioco preferito: Sasso-carta-forbici-lizard-Spock! Accetti la sfida?</h2>
-          <p className='game_info'>Le regole sono semplici: le forbici tagliano la carta; la carta copre la pietra; la pietra schiaccia la lucertola; la lucertola avvelena Spock; Spock rompe le forbici; le forbici decapitano la lucertola; la lucertola mangia la carta; la carta invalida Spock; Spock vaporizza il sasso; il sasso rompe le forbici</p>
-          <div className="box_game_advertising">
-            <GameTable />
-            <Advertising />
-          </div>
-
-
-        </div>
-
-
       </main>
       <UiFooter />
     </div>
