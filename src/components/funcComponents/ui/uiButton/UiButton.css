@@ -1,8 +1,9 @@
 .btnDefault{
     padding: 8px 16px;
     border-radius: 8px;
-    background-color: rgb(128, 28, 28);
+    background-color: rgb(160,62,52);
     color: white;
     font-weight: bold;
     border-style: none;
+    cursor: pointer;
 }

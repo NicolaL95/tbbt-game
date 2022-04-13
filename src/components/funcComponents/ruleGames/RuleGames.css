@@ -1,0 +1,73 @@
+
+#rule_games h1{
+    background: -webkit-linear-gradient(rgb(9, 6, 36), rgb(88, 88, 196));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin: 32px 0;
+}
+
+#rule_games h2{
+    text-align: center;
+}
+#rule_games h5{
+    text-align: center;
+    margin: 24px 0;
+    color:#655a5a
+}
+#rule_games .challenge{
+    width: 80%;
+    margin: 0 auto 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top-right-radius: 32px;
+    border-top-left-radius: 32px;
+}
+#rule_games .challenge .challenge_text{
+    width: 70%;
+    text-align: center;
+    color: rgb(160,62,52);
+}
+#rule_games .challenge img{
+    width: 30%;
+    height: auto;
+    border-top-right-radius: 32px;
+}
+
+#question_challenge{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#question_challenge span{
+    margin-right: 32px;
+    color: rgb(160,62,52);
+    font-weight: bold;
+    font-size: 2rem;
+}
+#question_challenge .playBtn{
+    padding: 16px 64px;
+    border-radius: 40px;
+    background-color: rgb(160,62,52);
+    color: white;
+    font-weight: bold;
+    border-style: none;
+    cursor: pointer;
+}
+
+
+@media all and (max-width:768px){
+    #rule_games .challenge{
+        width: 100%;
+        flex-direction: column;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+    #rule_games .challenge img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-top-right-radius: 0;
+    }
+}
