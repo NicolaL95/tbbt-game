@@ -17,11 +17,11 @@ function Home() {
       <UiHeader />
       <main>
         <div className="jumbotron" style={{ backgroundImage: `url(${bg_image})` }}></div>
-          <RuleGames />
+        <RuleGames />
         <div className="box_game_advertising">
           <GameTable />
           <Advertising />
-
+        </div>
         <div className="container">
           <h1>Ti ringraziamo per aver acquistato dal nostro shop!</h1>
           <h2>Sheldon vuole sfidarti al suo gioco preferito: Sasso-carta-forbici-lizard-Spock! Accetti la sfida?</h2>
