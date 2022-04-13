@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 // css 
 import './UiButton.css'
 
-function UiButton(props){
-    function clickBtn(){
-        props.callback()
+function UiButton(props) {
+    function clickBtn() {
+        return props.callback(props.id)
     }
     return (
         <button className={props.cssCustom} onClick={clickBtn}>
@@ -19,14 +19,14 @@ function UiButton(props){
 // default props 
 
 UiButton.defaultProps = {
-    cssCustom : 'btnDefault'
+    cssCustom: 'btnDefault'
 }
 
 // propTypes 
 UiButton.propTypes = {
-    nameBtn : PropTypes.string,
-    callback : PropTypes.func.isRequired,
-    cssCustom : PropTypes.string
+    nameBtn: PropTypes.string,
+    callback: PropTypes.func.isRequired,
+    cssCustom: PropTypes.string
 }
 
 
