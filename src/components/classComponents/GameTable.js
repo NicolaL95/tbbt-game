@@ -72,6 +72,8 @@ class GameTable extends Component {
                 <div className="game_table_container">
                     <div className="user_box">
                         <img src={geology_user} alt="" />
+                        <p> Studente di Geologia(Tu)</p>
+                        <p> {this.state.sUserScore}</p>
                         <div>
                             <UiButton
                                 nameBtn={'carta'}
@@ -102,22 +104,50 @@ class GameTable extends Component {
                         </div>
                     </div>
                     <div className="cpu_box">
-
-                    </div>
-                </div>
-                <div className='score'>
-                    <p>Round n  {this.state.sNumOfGames}</p>
-                    <div className='players_score'>
-                        <div className='user_score'>
-                            <p>Utente42</p>
-                            <p> {this.state.sUserScore}</p>
-                        </div>
-                        <div className='cpu_score'>
+                        <div className="alt_info">
+                            <img src={sheldon_cpu} alt="" />
                             <p>Sheldon</p>
                             <p>{this.state.sCpuSCore}</p>
                         </div>
+                        <div>
+                            <UiButton
+                                nameBtn={'carta'}
+                                id={0}
+                            />
+                            <UiButton
+                                nameBtn={'forbice'}
+                                id={1}
+                            />
+                            <UiButton
+                                nameBtn={'sasso'}
+                                id={2}
+
+                            />
+                            <UiButton
+                                nameBtn={'lizard'}
+                                id={3}
+                            />
+                            <UiButton
+                                nameBtn={'spock'}
+                                id={4}
+                            />
+                        </div>
+                    </div>
+                    <div className='score'>
+                        <p>Round n  {this.state.sNumOfGames}</p>
+                        <div className='players_score'>
+                            <div className='user_score'>
+
+
+                            </div>
+                            <div className='cpu_score'>
+                                <p>Sheldon</p>
+                                <p>{this.state.sCpuSCore}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </>
         )
     }
