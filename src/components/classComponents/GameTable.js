@@ -81,7 +81,7 @@ class GameTable extends Component {
                         <img className="img-set" src={geology_user} alt="" />
                         <p> Studente di Geologia(Tu)</p>
                         <p> {this.state.sUserScore}</p>
-                        <div>
+                        <div className="button_container">
                             <UiButton
                                 children={<img src={carta} alt="" />}
                                 id={0}
@@ -114,7 +114,7 @@ class GameTable extends Component {
                         <p>Sheldon</p>
                         <p>{this.state.sCpuSCore}</p>
 
-                        <div>
+                        <div className="button_container">
                             <UiButton
                                 children={<img src={carta} alt="" />}
 

@@ -15,6 +15,23 @@
     height: 500px;
 }
 
+.button_container{
+    display: flex;
+}
+
+.button_container .btnDefault{
+    width: 20%;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.btnDefault img{
+    width: 100%;
+}
+
+
+
 @media all and (max-width :768px){
     .game_table_container{
         width: 100%;
