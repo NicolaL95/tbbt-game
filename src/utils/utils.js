@@ -11,51 +11,51 @@ import gadg8 from '../assets/images/tshirt-penny.jpg';
 let gadgets = [
     {
         id: 1,
-        image : gadg1,
-        price : 6.99,
-        description : 'Fantastico pupazzetto raffigurante una delle principali protagoniste della serie'
+        image: gadg1,
+        price: 6.99,
+        description: 'Fantastico pupazzetto raffigurante una delle principali protagoniste della serie'
     },
     {
         id: 2,
-        image : gadg2,
-        price : 24.99,
-        description : 'T shirt Rossa'
+        image: gadg2,
+        price: 24.99,
+        description: 'T shirt Rossa'
     },
     {
         id: 3,
-        image : gadg3,
-        price : 8.99,
-        description : 'Tazza fantastica'
+        image: gadg3,
+        price: 8.99,
+        description: 'Tazza fantastica'
     },
     {
         id: 4,
-        image : gadg4,
-        price : 12.99,
-        description : 'seconda tazza'
+        image: gadg4,
+        price: 12.99,
+        description: 'seconda tazza'
     },
     {
         id: 5,
-        image : gadg5,
-        price : 9.99,
-        description : 'terza tazza'
+        image: gadg5,
+        price: 9.99,
+        description: 'terza tazza'
     },
     {
         id: 6,
-        image : gadg6,
-        price : 8.99,
-        description : 't shirt'
+        image: gadg6,
+        price: 8.99,
+        description: 't shirt'
     },
     {
         id: 7,
-        image : gadg7,
-        price : 14.99,
-        description : 'tazza carta forbice sasso'
+        image: gadg7,
+        price: 14.99,
+        description: 'tazza carta forbice sasso'
     },
     {
         id: 8,
-        image : gadg8,
-        price : 19.99,
-        description : 't shirt penny'
+        image: gadg8,
+        price: 19.99,
+        description: 't shirt penny'
     },
 ]
 
@@ -244,4 +244,56 @@ function calcMatch(user_choice, cpu_score) {
     return resultMatch
 }
 
-export { calcMatch,gadgets }
+function iaDecision(roundPlayed, playerWin, cpuWin) {
+
+    let bluffWorksCounter = localStorage.getItem("bluffWorks");
+    let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff")
+
+    if (cpuWin == true) {
+        if (roundPlayed == 1 || (playerBeliveInBluff == 0 && bluffWorksCounter == 0)) {
+            bluffWorksCounter = bluffWorksCounter + 2
+        }
+        else {
+            bluffWorksCounter = bluffWorksCounter + 1
+        }
+        localStorage.setItem("bluffWorks", bluffWorksCounter)
+    } else if (playerWin == true) {
+        if (roundPlayed == 1 || (playerBeliveInBluff == 0 && bluffWorksCounter == 0)) {
+            playerBeliveInBluff = playerBeliveInBluff + 2
+        }
+        else {
+            playerBeliveInBluff = playerBeliveInBluff + 1
+        }
+    }
+    localStorage.setItem("playerBeliveInBluff", playerBeliveInBluff)
+}
+
+function sheldonIsTooSmartForYou(bluffChoice, playerBeliveInBluff, bluffWorks, roundPlayed) {
+    let finalChoice = null;
+    let randomChoice = Math.floor(Math.random() * 12);
+    if (roundPlayed == 1 || playerBeliveInBluff == bluffWorks) {
+        if (randomChoice > 5) {
+            finalChoice = bluffChoice
+        } else {
+            finalChoice = Math.floor(Math.random() * 5);
+        }
+    } else if (bluffWorks > playerBeliveInBluff) {
+        if (randomChoice > 3) {
+            finalChoice = bluffChoice
+        } else {
+            finalChoice = Math.floor(Math.random() * 5);
+        }
+    } else {
+        if (randomChoice > 3) {
+            finalChoice = Math.floor(Math.random() * 5);
+
+        } else {
+            finalChoice = bluffChoice
+        }
+    }
+    return finalChoice
+
+}
+
+
+export { calcMatch, iaDecision, sheldonIsTooSmartForYou, gadgets }

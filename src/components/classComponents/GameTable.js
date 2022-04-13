@@ -21,7 +21,7 @@ import spock from "../../assets/images/spock.png"
 import game_audio from "../../assets/audio/game_audio.mp3"
 
 // import utils 
-import { calcMatch } from '../../utils/utils'
+import { calcMatch, sheldonIsTooSmartForYou, iaDecision } from '../../utils/utils'
 
 class GameTable extends Component {
     constructor(props) {
@@ -236,13 +236,16 @@ class GameTable extends Component {
             }
             new Audio(game_audio).play();
 
-
             let nOfGames = localStorage.getItem("nOfGames")
+            console.log(localStorage.getItem("nOfGames"));
             let userScore = localStorage.getItem("userScore")
             let cpuScore = localStorage.getItem("cpuScore")
+            let bluffWorks = localStorage.getItem("bluffWorks")
+            let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff")
 
-            const timerid = setTimeout(() => {
-                let cpu_score = Math.floor(Math.random() * 5);
+            const timer = setTimeout(() => {
+                /*  let cpu_score = Math.floor(Math.random() * 5); */
+                let cpu_score = sheldonIsTooSmartForYou(cpu_bluff, playerBeliveInBluff, bluffWorks, nOfGames)
                 let result = calcMatch(user_score, cpu_score)
 
                 if (result.vinceUser == true) {
@@ -293,7 +296,7 @@ class GameTable extends Component {
                         break;
                 }
 
-
+                iaDecision(nOfGames, result.vinceUser, result.vinceCpu);
                 this.setState({
                     sNumOfGames: nOfGames,
                     sUserScore: userScore,
