@@ -6,12 +6,14 @@ import Advertising from '../components/classComponents/Advertising';
 //images
 import bg_image from '../assets/images/tbbt_bg_image.jpg'
 
+
 function Home() {
   return (
     <div className="Home">
       <UiHeader />
       <main>
         <div className="jumbotron" style={{ backgroundImage: `url(${bg_image})` }}></div>
+
         <div className="container">
           <h1>Ti ringraziamo per aver acquistato dal nostro shop!</h1>
           <h2>Sheldon vuole sfidarti al suo gioco preferito: Sasso-carta-forbici-lizard-Spock! Accetti la sfida?</h2>
@@ -19,6 +21,7 @@ function Home() {
           <div className="box_game_advertising">
             <GameTable />
             <Advertising />
+
           </div>
         </div>
 
