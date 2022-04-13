@@ -14,6 +14,11 @@ import { calcMatch } from '../../utils/utils'
 class GameTable extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            sNumOfGames: 0,
+            sUserScore: 0,
+            sCpuSCore: 0
+        };
     }
 
     componentDidMount() {
@@ -30,8 +35,31 @@ class GameTable extends Component {
 
     // funzione play game 
     playGame = (user_score) => {
+        let nOfGames = localStorage.getItem("nOfGames")
+        let userScore = localStorage.getItem("userScore")
+        let cpuScore = localStorage.getItem("cpuScore")
+
+
         let cpu_score = Math.floor(Math.random() * 5);
         let result = calcMatch(user_score, cpu_score)
+
+        if (result.vinceUser == true) {
+            userScore++;
+            localStorage.setItem("userScore", userScore)
+        }
+        else if (result.vinceCpu == true) {
+            cpuScore++;
+            localStorage.setItem("cpuScore", cpuScore)
+        }
+        nOfGames++;
+        localStorage.setItem("nOfGames", nOfGames);
+
+        this.setState({
+            sNumOfGames: nOfGames,
+            sUserScore: userScore,
+            sCpuSCore: cpuScore
+        })
+
         console.log(result);
     }
     render() {
@@ -67,6 +95,19 @@ class GameTable extends Component {
                         />
                     </div>
                     <div className="cpu_box">
+                    </div>
+                </div>
+                <div className='score'>
+                    <p>Round n  {this.state.sNumOfGames}</p>
+                    <div className='players_score'>
+                        <div className='user_score'>
+                            <p>Utente42</p>
+                            <p> {this.state.sUserScore}</p>
+                        </div>
+                        <div className='cpu_score'>
+                            <p>Sheldon</p>
+                            <p>{this.state.sCpuSCore}</p>
+                        </div>
                     </div>
                 </div>
             </>

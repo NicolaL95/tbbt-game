@@ -9,9 +9,7 @@ import bg_image from '../assets/images/tbbt_bg_image.jpg'
 
 function Home() {
 
-  let nOfGames = localStorage.getItem("nOfGames")
-  let userScore = localStorage.getItem("userScore")
-  let cpuScore = localStorage.getItem("cpuScore")
+
 
   return (
     <div className="Home">
@@ -26,8 +24,8 @@ function Home() {
           <div className="box_game_advertising">
             <GameTable />
             <Advertising />
-
           </div>
+
         </div>
 
       </main>
