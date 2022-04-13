@@ -8,6 +8,10 @@ import './GameTable.css'
 
 import UiButton from "../funcComponents/ui/uiButton/UiButton";
 
+//images
+import sheldon_cpu from "../../assets/images/sheldon_cpu.png"
+import geology_user from "../../assets/images/geology_user.png"
+
 // import utils 
 import { calcMatch } from '../../utils/utils'
 
@@ -67,34 +71,38 @@ class GameTable extends Component {
             <>
                 <div className="game_table_container">
                     <div className="user_box">
-                        <UiButton
-                            nameBtn={'carta'}
-                            id={0}
-                            callback={this.playGame}
-                        />
-                        <UiButton
-                            nameBtn={'forbice'}
-                            id={1}
-                            callback={this.playGame}
-                        />
-                        <UiButton
-                            nameBtn={'sasso'}
-                            id={2}
-                            callback={this.playGame}
-                        />
-                        <UiButton
-                            nameBtn={'lizard'}
-                            id={3}
-                            callback={this.playGame}
+                        <img src={geology_user} alt="" />
+                        <div>
+                            <UiButton
+                                nameBtn={'carta'}
+                                id={0}
+                                callback={this.playGame}
+                            />
+                            <UiButton
+                                nameBtn={'forbice'}
+                                id={1}
+                                callback={this.playGame}
+                            />
+                            <UiButton
+                                nameBtn={'sasso'}
+                                id={2}
+                                callback={this.playGame}
+                            />
+                            <UiButton
+                                nameBtn={'lizard'}
+                                id={3}
+                                callback={this.playGame}
 
-                        />
-                        <UiButton
-                            nameBtn={'spock'}
-                            id={4}
-                            callback={this.playGame}
-                        />
+                            />
+                            <UiButton
+                                nameBtn={'spock'}
+                                id={4}
+                                callback={this.playGame}
+                            />
+                        </div>
                     </div>
                     <div className="cpu_box">
+
                     </div>
                 </div>
                 <div className='score'>
