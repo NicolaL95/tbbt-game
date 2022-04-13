@@ -29,7 +29,38 @@ class GameTable extends Component {
         this.state = {
             sNumOfGames: 0,
             sUserScore: 0,
-            sCpuSCore: 0
+            sCpuSCore: 0,
+            timeToBluff: true,
+            hasBluffPlayer: {
+                paperBluff: false,
+                scissorBluff: false,
+                rockBluff: false,
+                lizardBluff: false,
+                spockBluff: false
+
+            },
+            hasBluffCpu: {
+                paperBluff: false,
+                scissorBluff: false,
+                rockBluff: false,
+                lizardBluff: false,
+                spockBluff: false
+            },
+            hasChoicePlayer: {
+                paperChoice: false,
+                scissorChoice: false,
+                rockChoice: false,
+                lizardChoice: false,
+                spockChoice: false
+
+            },
+            hasChoiceCpu: {
+                paperChoice: false,
+                scissorChoice: false,
+                rockChoice: false,
+                lizardChoice: false,
+                spockChoice: false
+            }
         };
     }
 
@@ -47,36 +78,233 @@ class GameTable extends Component {
 
     // funzione play game 
     playGame = (user_score) => {
-        new Audio(game_audio).play();
-        /*   setTimeout(waitAudio(), 2000) */
 
-        let nOfGames = localStorage.getItem("nOfGames")
-        let userScore = localStorage.getItem("userScore")
-        let cpuScore = localStorage.getItem("cpuScore")
 
-        const timerid = setTimeout(() => {
-            let cpu_score = Math.floor(Math.random() * 5);
-            let result = calcMatch(user_score, cpu_score)
+        let cpu_bluff = Math.floor(Math.random() * 5);
 
-            if (result.vinceUser == true) {
-                userScore++;
-                localStorage.setItem("userScore", userScore)
-            }
-            else if (result.vinceCpu == true) {
-                cpuScore++;
-                localStorage.setItem("cpuScore", cpuScore)
-            }
-            nOfGames++;
-            localStorage.setItem("nOfGames", nOfGames);
+        if (this.state.timeToBluff) {
             this.setState({
-                sNumOfGames: nOfGames,
-                sUserScore: userScore,
-                sCpuSCore: cpuScore
-            })
-            console.log(result);
-        }
-            , 2000);
+                hasBluffPlayer: {
+                    paperBluff: false,
+                    scissorBluff: false,
+                    rockBluff: false,
+                    lizardBluff: false,
+                    spockBluff: false
 
+                },
+                hasBluffCpu: {
+                    paperBluff: false,
+                    scissorBluff: false,
+                    rockBluff: false,
+                    lizardBluff: false,
+                    spockBluff: false
+                },
+                hasChoicePlayer: {
+                    paperChoice: false,
+                    scissorChoice: false,
+                    rockChoice: false,
+                    lizardChoice: false,
+                    spockChoice: false
+
+                },
+                hasChoiceCpu: {
+                    paperChoice: false,
+                    scissorChoice: false,
+                    rockChoice: false,
+                    lizardChoice: false,
+                    spockChoice: false
+                }
+
+            })
+            switch (user_score) {
+                case 0:
+                    this.setState({
+                        hasBluffPlayer: {
+                            paperBluff: true
+                        }
+                    })
+                    break;
+                case 1:
+                    this.setState({
+                        hasBluffPlayer: {
+                            scissorBluff: true
+                        }
+                    })
+                    break;
+                case 2:
+                    this.setState({
+                        hasBluffPlayer: {
+                            rockBluff: true
+                        }
+                    })
+                    break;
+                case 3:
+                    this.setState({
+                        hasBluffPlayer: {
+                            lizardBluff: true
+                        }
+                    })
+                    break;
+                case 4:
+                    this.setState({
+                        hasBluffPlayer: {
+                            spockBluff: true
+                        }
+                    })
+                    break;
+            }
+
+
+            switch (cpu_bluff) {
+                case 0:
+                    this.setState({
+                        hasBluffCpu: {
+                            paperBluff: true
+                        }
+                    })
+                    break;
+                case 1:
+                    this.setState({
+                        hasBluffCpu: {
+                            scissorBluff: true
+                        }
+                    })
+                    break;
+                case 2:
+                    this.setState({
+                        hasBluffCpu: {
+                            rockBluff: true
+                        }
+                    })
+                    break;
+                case 3:
+                    this.setState({
+                        hasBluffCpu: {
+                            lizardBluff: true
+                        }
+                    })
+                    break;
+                case 4:
+                    this.setState({
+                        hasBluffCpu: {
+                            spockBluff: true
+                        }
+                    })
+                    break;
+            }
+
+            this.state.timeToBluff = false;
+        }
+        else {
+
+            switch (user_score) {
+                case 0:
+                    this.setState({
+                        hasChoicePlayer: {
+                            paperChoice: true
+                        }
+                    })
+                    break;
+                case 1:
+                    this.setState({
+                        hasChoicePlayer: {
+                            scissorChoice: true
+                        }
+                    })
+                    break;
+                case 2:
+                    this.setState({
+                        hasChoicePlayer: {
+                            rockChoice: true
+                        }
+                    })
+                    break;
+                case 3:
+                    this.setState({
+                        hasChoicePlayer: {
+                            lizardChoice: true
+                        }
+                    })
+                    break;
+                case 4:
+                    this.setState({
+                        hasChoicePlayer: {
+                            spockChoice: true
+                        }
+                    })
+                    break;
+            }
+            new Audio(game_audio).play();
+
+
+            let nOfGames = localStorage.getItem("nOfGames")
+            let userScore = localStorage.getItem("userScore")
+            let cpuScore = localStorage.getItem("cpuScore")
+
+            const timerid = setTimeout(() => {
+                let cpu_score = Math.floor(Math.random() * 5);
+                let result = calcMatch(user_score, cpu_score)
+
+                if (result.vinceUser == true) {
+                    userScore++;
+                    localStorage.setItem("userScore", userScore)
+                }
+                else if (result.vinceCpu == true) {
+                    cpuScore++;
+                    localStorage.setItem("cpuScore", cpuScore)
+                }
+                nOfGames++;
+                localStorage.setItem("nOfGames", nOfGames);
+                switch (cpu_score) {
+                    case 0:
+                        this.setState({
+                            hasChoiceCpu: {
+                                paperChoice: true
+                            }
+                        })
+                        break;
+                    case 1:
+                        this.setState({
+                            hasChoiceCpu: {
+                                scissorChoice: true
+                            }
+                        })
+                        break;
+                    case 2:
+                        this.setState({
+                            hasChoiceCpu: {
+                                rockChoice: true
+                            }
+                        })
+                        break;
+                    case 3:
+                        this.setState({
+                            hasChoiceCpu: {
+                                lizardChoice: true
+                            }
+                        })
+                        break;
+                    case 4:
+                        this.setState({
+                            hasChoiceCpu: {
+                                spockChoice: true
+                            }
+                        })
+                        break;
+                }
+
+
+                this.setState({
+                    sNumOfGames: nOfGames,
+                    sUserScore: userScore,
+                    sCpuSCore: cpuScore,
+                    timeToBluff: true,
+                })
+                console.log(result);
+            }
+                , 2000);
+
+        }
     }
     render() {
         return (
@@ -90,27 +318,27 @@ class GameTable extends Component {
                         <p className="mb"> {this.state.sUserScore}</p>
                         <div className="button_container">
                             <UiButton
-                                children={<img className={this.state.hasbluff ? 'bluffborder' : 'nobluff'} src={carta} alt="" />}
+                                children={<img className={this.state.hasChoicePlayer.paperChoice ? 'choice_border' : this.state.hasBluffPlayer.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
                                 id={0}
                                 callback={this.playGame}
                             />
                             <UiButton
-                                children={<img className="btn_gameplay" src={forbici} alt="" />}
+                                children={<img className={this.state.hasChoicePlayer.scissorChoice ? 'choice_border' : this.state.hasBluffPlayer.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
                                 id={1}
                                 callback={this.playGame}
                             />
                             <UiButton
-                                children={<img className="btn_gameplay" src={sasso} alt="" />}
+                                children={<img className={this.state.hasChoicePlayer.rockChoice ? 'choice_border' : this.state.hasBluffPlayer.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
                                 id={2}
                                 callback={this.playGame}
                             />
                             <UiButton
-                                children={<img className="btn_gameplay" src={lizard} alt="" />}
+                                children={<img className={this.state.hasChoicePlayer.lizardChoice ? 'choice_border' : this.state.hasBluffPlayer.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
                                 id={3}
                                 callback={this.playGame}
                             />
                             <UiButton
-                                children={<img className="btn_gameplay" src={spock} alt="" />}
+                                children={<img className={this.state.hasChoicePlayer.spockChoice ? 'choice_border' : this.state.hasBluffPlayer.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
                                 id={4}
                                 callback={this.playGame}
                             />
@@ -123,24 +351,24 @@ class GameTable extends Component {
 
                         <div className="button_container">
                             <UiButton
-                                children={<img className="btn_gameplay" src={carta} alt="" />}
+                                children={<img className={this.state.hasChoiceCpu.paperChoice ? 'choice_border' : this.state.hasBluffCpu.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
 
                             />
                             <UiButton
-                                children={<img className="btn_gameplay" src={forbici} alt="" />}
+                                children={<img className={this.state.hasChoiceCpu.scissorChoice ? 'choice_border' : this.state.hasBluffCpu.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
 
                             />
                             <UiButton
-                                children={<img className="btn_gameplay" src={sasso} alt="" />}
+                                children={<img className={this.state.hasChoiceCpu.rockChoice ? 'choice_border' : this.state.hasBluffCpu.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
 
 
                             />
                             <UiButton
-                                children={<img className="btn_gameplay" src={lizard} alt="" />}
+                                children={<img className={this.state.hasChoiceCpu.lizardChoice ? 'choice_border' : this.state.hasBluffCpu.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
 
                             />
                             <UiButton
-                                children={<img className="btn_gameplay" src={spock} alt="" />}
+                                children={<img className={this.state.hasChoiceCpu.spockChoice ? 'choice_border' : this.state.hasBluffCpu.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
 
                             />
                         </div>

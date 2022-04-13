@@ -22,6 +22,16 @@
         margin-bottom: 10px;
 }
 
+.bluff_border{
+    border: 5px solid red;
+    border-radius: 50%;
+}
+
+.choice_border{
+    border: 5px solid greenyellow;
+    border-radius: 50%;
+}
+
 .pb_7{
     padding-bottom: 7px;
 }
