@@ -1,0 +1,8 @@
+.btnDefault{
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: rgb(128, 28, 28);
+    color: white;
+    font-weight: bold;
+    border-style: none;
+}
