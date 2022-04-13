@@ -29,7 +29,8 @@ class GameTable extends Component {
         this.state = {
             sNumOfGames: 0,
             sUserScore: 0,
-            sCpuSCore: 0
+            sCpuSCore: 0,
+            CpuChoice: null
         };
     }
 
@@ -71,7 +72,8 @@ class GameTable extends Component {
             this.setState({
                 sNumOfGames: nOfGames,
                 sUserScore: userScore,
-                sCpuSCore: cpuScore
+                sCpuSCore: cpuScore,
+                CpuChoice: cpu_score
             })
             console.log(result);
         }
@@ -89,31 +91,40 @@ class GameTable extends Component {
                         <p> Studente di Geologia(Tu)</p>
                         <p className="mb"> {this.state.sUserScore}</p>
                         <div className="button_container">
-                            <UiButton
-                                children={<img className={this.state.hasbluff ? 'bluffborder' : 'nobluff'} src={carta} alt="" />}
-                                id={0}
-                                callback={this.playGame}
-                            />
-                            <UiButton
-                                children={<img className="btn_gameplay" src={forbici} alt="" />}
-                                id={1}
-                                callback={this.playGame}
-                            />
-                            <UiButton
-                                children={<img className="btn_gameplay" src={sasso} alt="" />}
-                                id={2}
-                                callback={this.playGame}
-                            />
-                            <UiButton
-                                children={<img className="btn_gameplay" src={lizard} alt="" />}
-                                id={3}
-                                callback={this.playGame}
-                            />
-                            <UiButton
-                                children={<img className="btn_gameplay" src={spock} alt="" />}
-                                id={4}
-                                callback={this.playGame}
-                            />
+                            <div className="b1">
+                                <UiButton
+                                    style={{ marginRight: 16 }}
+                                    children={<img className={this.state.hasbluff ? 'bluffborder' : 'nobluff'} src={carta} alt="" />}
+                                    id={0}
+                                    callback={this.playGame}
+                                />
+                                <UiButton
+                                    style={{ marginLeft: 16 }}
+                                    children={<img className="btn_gameplay" src={forbici} alt="" />}
+                                    id={1}
+                                    callback={this.playGame}
+                                />
+                            </div>
+                            <div className="b2">
+                                <UiButton
+                                    children={<img className="btn_gameplay" src={sasso} alt="" />}
+                                    id={2}
+                                    callback={this.playGame}
+                                />
+                                <UiButton
+                                    children={<img className="btn_gameplay" src={lizard} alt="" />}
+                                    id={3}
+                                    callback={this.playGame}
+                                />
+                            </div>
+                            <div className="b3">
+                                <UiButton
+                                    children={<img className="btn_gameplay" src={spock} alt="" />}
+                                    id={4}
+                                    callback={this.playGame}
+                                />
+                            </div>
+
                         </div>
                     </div>
                     <div className="cpu_box w-50">
@@ -122,27 +133,32 @@ class GameTable extends Component {
                         <p className="mb">{this.state.sCpuSCore}</p>
 
                         <div className="button_container">
-                            <UiButton
-                                children={<img className="btn_gameplay" src={carta} alt="" />}
+                            <div className="b1">
+                                <UiButton
+                                    style={{ marginRight: 16 }}
+                                    children={<img className={this.state.CpuChoice === 0 ? 'btnActive' : 'btn_gameplay'}  src={carta} alt="" />}
+                                />
+                                <UiButton
+                                    style={{ marginLeft: 16 }}
+                                    children={<img className={this.state.CpuChoice === 1 ? 'btnActive' : 'btn_gameplay'}   src={forbici} alt="" />}
 
-                            />
-                            <UiButton
-                                children={<img className="btn_gameplay" src={forbici} alt="" />}
+                                />
+                            </div>
+                            <div className="b2">
+                                <UiButton
+                                    children={<img className={this.state.CpuChoice === 2 ? 'btnActive' : 'btn_gameplay'}   src={sasso} alt="" />}
+                                />
+                                <UiButton
+                                    children={<img className={this.state.CpuChoice === 3 ? 'btnActive' : 'btn_gameplay'}   src={lizard} alt="" />}
 
-                            />
-                            <UiButton
-                                children={<img className="btn_gameplay" src={sasso} alt="" />}
+                                />
+                            </div>
+                            <div className="b3">
+                                <UiButton
+                                    children={<img className={this.state.CpuChoice === 4 ? 'btnActive' : 'btn_gameplay'}  src={spock} alt="" />}
+                                />
+                            </div>
 
-
-                            />
-                            <UiButton
-                                children={<img className="btn_gameplay" src={lizard} alt="" />}
-
-                            />
-                            <UiButton
-                                children={<img className="btn_gameplay" src={spock} alt="" />}
-
-                            />
                         </div>
                     </div>
                 </div>
