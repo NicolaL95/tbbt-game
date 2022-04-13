@@ -10,15 +10,55 @@ footer .footer_container{
     margin-bottom: 32px;
 }
 footer .info_footer{
-    width: 40%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
+}
+footer ul{
+    font-weight: bold;
+    font-size: 1.8rem;
 }
 footer li{
     list-style: none;
     margin: 8px 0;
+    font-size: 1rem;
 }
 
 footer .copyright{
     text-align: center;
+}
+
+@media all and (max-width :768px){
+    footer{
+        margin-top: 0;
+    }
+    footer .footer_container{
+        flex-direction: column;
+    }
+    footer .info_footer{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    footer .info_footer ul{
+        margin-right: 32px;
+        margin-bottom: 32px;
+    }
+    footer .socialmedia{
+        margin-top: 24px;
+        display: flex;
+    }
+    footer li{
+        margin-right: 16px;
+    }
+    .copyright{
+        font-size: .8rem;
+    }
+    
+}
+@media all and (max-width:400px){
+    footer{
+        padding: 16px;
+    }
 }

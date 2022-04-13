@@ -28,9 +28,11 @@ class Advertising extends Component {
     render() {
         return (
             <section className="advertising">
-                <div> Clicca per acquistare !  </div>
-                <img src={gadgets[this.state.counter].image}>
-                </img>
+                <img src={gadgets[this.state.counter].image}/> 
+                
+                <div> Acquista ora per soli <span>{gadgets[this.state.counter].price} &euro;</span></div>
+                <div className="description">{gadgets[this.state.counter].description}</div>
+
             </section>
         );
     }
