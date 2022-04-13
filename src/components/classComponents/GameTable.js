@@ -11,6 +11,11 @@ import UiButton from "../funcComponents/ui/uiButton/UiButton";
 //images
 import sheldon_cpu from "../../assets/images/sheldon_cpu.png"
 import geology_user from "../../assets/images/geology_user.png"
+import carta from "../../assets/images/carta.png"
+import sasso from "../../assets/images/sasso.png"
+import forbici from "../../assets/images/forbici.png"
+import lizard from "../../assets/images/lizard.png"
+import spock from "../../assets/images/spock.png"
 
 // import utils 
 import { calcMatch } from '../../utils/utils'
@@ -69,9 +74,11 @@ class GameTable extends Component {
     render() {
         return (
             <>
+                {/* <p>Round n  {this.state.sNumOfGames}</p> */}
                 <div className="game_table_container">
-                    <div className="user_box">
-                        <img src={geology_user} alt="" />
+
+                    <div className="user_box w-50">
+                        <img className="img-set" src={geology_user} alt="" />
                         <p> Studente di Geologia(Tu)</p>
                         <p> {this.state.sUserScore}</p>
                         <div>
@@ -79,71 +86,61 @@ class GameTable extends Component {
                                 nameBtn={'carta'}
                                 id={0}
                                 callback={this.playGame}
+                                src={carta}
                             />
                             <UiButton
                                 nameBtn={'forbice'}
                                 id={1}
                                 callback={this.playGame}
+                                src={forbici}
                             />
                             <UiButton
                                 nameBtn={'sasso'}
                                 id={2}
                                 callback={this.playGame}
+                                src={sasso}
                             />
                             <UiButton
                                 nameBtn={'lizard'}
                                 id={3}
                                 callback={this.playGame}
-
+                                src={lizard}
                             />
                             <UiButton
                                 nameBtn={'spock'}
                                 id={4}
                                 callback={this.playGame}
+                                src={spock}
                             />
                         </div>
                     </div>
-                    <div className="cpu_box">
-                        <div className="alt_info">
-                            <img src={sheldon_cpu} alt="" />
-                            <p>Sheldon</p>
-                            <p>{this.state.sCpuSCore}</p>
-                        </div>
+                    <div className="cpu_box w-50">
+                        <img className="img-set" src={sheldon_cpu} alt="" />
+                        <p>Sheldon</p>
+                        <p>{this.state.sCpuSCore}</p>
+
                         <div>
                             <UiButton
                                 nameBtn={'carta'}
-                                id={0}
+                                src={carta}
                             />
                             <UiButton
                                 nameBtn={'forbice'}
-                                id={1}
+                                src={forbici}
                             />
                             <UiButton
                                 nameBtn={'sasso'}
-                                id={2}
 
+                                src={sasso}
                             />
                             <UiButton
                                 nameBtn={'lizard'}
-                                id={3}
+                                src={lizard}
                             />
                             <UiButton
                                 nameBtn={'spock'}
-                                id={4}
+                                src={spock}
                             />
-                        </div>
-                    </div>
-                    <div className='score'>
-                        <p>Round n  {this.state.sNumOfGames}</p>
-                        <div className='players_score'>
-                            <div className='user_score'>
-
-
-                            </div>
-                            <div className='cpu_score'>
-                                <p>Sheldon</p>
-                                <p>{this.state.sCpuSCore}</p>
-                            </div>
                         </div>
                     </div>
                 </div>
