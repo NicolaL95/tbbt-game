@@ -94,22 +94,21 @@ class GameTable extends Component {
                             callback={this.playGame}
                         />
                     </div>
-                    <div className="cpu_box">
-                    </div>
-                </div>
-                <div className='score'>
-                    <p>Round n  {this.state.sNumOfGames}</p>
-                    <div className='players_score'>
-                        <div className='user_score'>
-                            <p>Utente42</p>
-                            <p> {this.state.sUserScore}</p>
-                        </div>
-                        <div className='cpu_score'>
-                            <p>Sheldon</p>
-                            <p>{this.state.sCpuSCore}</p>
+                    <div className='score'>
+                        <p>Round n  {this.state.sNumOfGames}</p>
+                        <div className='players_score'>
+                            <div className='user_score'>
+                                <p>Utente42</p>
+                                <p> {this.state.sUserScore}</p>
+                            </div>
+                            <div className='cpu_score'>
+                                <p>Sheldon</p>
+                                <p>{this.state.sCpuSCore}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </>
         )
     }
