@@ -56,13 +56,13 @@ function UiFooter() {
 
                 <ul className="socialmedia">
                     <li>
-                        Facebook
+                        <i className="fab fa-facebook"></i>
                     </li>
                     <li>
-                        twitter
+                        <i className="fab fa-twitter"></i>
                     </li>
                     <li>
-                        Instagram
+                    <i className="fab fa-instagram"></i>
                     </li>
                 </ul>
             </div>

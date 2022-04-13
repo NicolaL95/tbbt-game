@@ -11,35 +11,51 @@ import gadg8 from '../assets/images/tshirt-penny.jpg';
 let gadgets = [
     {
         id: 1,
-        image : gadg1
+        image : gadg1,
+        price : 6.99,
+        description : 'Fantastico pupazzetto raffigurante una delle principali protagoniste della serie'
     },
     {
         id: 2,
-        image : gadg2
+        image : gadg2,
+        price : 24.99,
+        description : 'T shirt Rossa'
     },
     {
         id: 3,
-        image : gadg3
+        image : gadg3,
+        price : 8.99,
+        description : 'Tazza fantastica'
     },
     {
         id: 4,
-        image : gadg4
+        image : gadg4,
+        price : 12.99,
+        description : 'seconda tazza'
     },
     {
         id: 5,
-        image : gadg5
+        image : gadg5,
+        price : 9.99,
+        description : 'terza tazza'
     },
     {
         id: 6,
-        image : gadg6
+        image : gadg6,
+        price : 8.99,
+        description : 't shirt'
     },
     {
         id: 7,
-        image : gadg7
+        image : gadg7,
+        price : 14.99,
+        description : 'tazza carta forbice sasso'
     },
     {
         id: 8,
-        image : gadg8
+        image : gadg8,
+        price : 19.99,
+        description : 't shirt penny'
     },
 ]
 
