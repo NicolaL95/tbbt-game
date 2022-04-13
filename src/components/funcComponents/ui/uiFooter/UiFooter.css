@@ -1,0 +1,23 @@
+footer{
+    padding: 60px 120px;
+    background-color: rgb(88, 88, 196);;
+    color: white;
+}
+footer .footer_container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+footer .info_footer{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+footer li{
+    list-style: none;
+    margin: 8px 0;
+}
+
+footer .copyright{
+    text-align: center;
+}
