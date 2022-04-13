@@ -66,7 +66,7 @@ function UiFooter() {
                     </li>
                 </ul>
             </div>
-            <div className="copyright"> &copy; 2007 - 2022, The Big Bang Theory Fan Site. A fan site unaffiliated with Chuck Lorre Productions or Warner Bros. </div>
+            <div className="copyright"> &copy; 2007 - 2022, The Big Bang filiated with Chuck Lorre Productions or Warner Bros. </div>
         </footer>
     )
 }

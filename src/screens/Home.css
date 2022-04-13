@@ -1,0 +1,11 @@
+.game_info{
+        width: 750px;
+        border: 1px solid;
+        padding: 10px;
+}
+
+.jumbotron{
+        height: 600px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
