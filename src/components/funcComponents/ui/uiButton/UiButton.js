@@ -10,9 +10,11 @@ function UiButton(props) {
         return props.callback(props.id)
     }
     return (
-        <div onClick={clickBtn}>
-            <img src={props.src} alt="" />
-        </div>
+
+        <button className={props.cssCustom} onClick={clickBtn}>
+            {props.nameBtn}
+            {props.children}
+        </button>
     )
 }
 

@@ -83,34 +83,29 @@ class GameTable extends Component {
                         <p> {this.state.sUserScore}</p>
                         <div>
                             <UiButton
-                                nameBtn={'carta'}
+                                children={<img src={carta} alt="" />}
                                 id={0}
                                 callback={this.playGame}
-                                src={carta}
                             />
                             <UiButton
-                                nameBtn={'forbice'}
+                                children={<img src={forbici} alt="" />}
                                 id={1}
                                 callback={this.playGame}
-                                src={forbici}
                             />
                             <UiButton
-                                nameBtn={'sasso'}
+                                children={<img src={sasso} alt="" />}
                                 id={2}
                                 callback={this.playGame}
-                                src={sasso}
                             />
                             <UiButton
-                                nameBtn={'lizard'}
+                                children={<img src={lizard} alt="" />}
                                 id={3}
                                 callback={this.playGame}
-                                src={lizard}
                             />
                             <UiButton
-                                nameBtn={'spock'}
+                                children={<img src={spock} alt="" />}
                                 id={4}
                                 callback={this.playGame}
-                                src={spock}
                             />
                         </div>
                     </div>
@@ -121,25 +116,25 @@ class GameTable extends Component {
 
                         <div>
                             <UiButton
-                                nameBtn={'carta'}
-                                src={carta}
-                            />
-                            <UiButton
-                                nameBtn={'forbice'}
-                                src={forbici}
-                            />
-                            <UiButton
-                                nameBtn={'sasso'}
+                                children={<img src={carta} alt="" />}
 
-                                src={sasso}
                             />
                             <UiButton
-                                nameBtn={'lizard'}
-                                src={lizard}
+                                children={<img src={forbici} alt="" />}
+
                             />
                             <UiButton
-                                nameBtn={'spock'}
-                                src={spock}
+                                children={<img src={sasso} alt="" />}
+
+
+                            />
+                            <UiButton
+                                children={<img src={lizard} alt="" />}
+
+                            />
+                            <UiButton
+                                children={<img src={spock} alt="" />}
+
                             />
                         </div>
                     </div>
