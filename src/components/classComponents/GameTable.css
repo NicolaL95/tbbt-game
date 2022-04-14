@@ -14,8 +14,17 @@
     background-image: url(https://us.123rf.com/450wm/vasilyrosca/vasilyrosca2004/vasilyrosca200400260/145426048-sfondo-punteggio-vittoria-glitch-gioco-retr%C3%B2-videogioco-vinci-testo-effetto-glitch.jpg?ver=6);
     background-size: cover;
     background-position: center;
-    display: flex;
-    padding: 24px ;
+    padding: 12px ;
+    text-align: center;
+}
+.winGame a{
+    color:white;
+    display: inline-block;
+    font-size: .5rem;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
 }
 .loseGame{
     width: 60%;
@@ -23,8 +32,18 @@
     background-image: url(https://www.usb.it/fileadmin/_processed_/e/3/csm_Gameover-web-final_2510fc2ba4.jpg);
     background-size: cover;
     background-position: center;
-    display: flex;
     padding: 24px ;
+}
+.loseGame a{
+    color:rgb(88, 88, 196);
+    display: inline-block;
+    font-size: 1,3rem;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 8px;
+    font-weight: bold;
 }
 .user_box.w-50{
     border-right: 1px solid white;
@@ -184,7 +203,15 @@
 
 /* fino a 768px cambio vita  */
 @media all and (max-width :768px){
-    
+    .loseGame{
+        width: 100%;
+    }
+    .winGame{
+        width: 100%;
+    }
+    .button_container .btnDefault {
+        width: 30%;
+    }
     .w-50 .box_result .life{
         width: 100px;
         height: 10px;
@@ -196,7 +223,7 @@
         width: 20px;
         height: 100%;
         background-color: gray;
-        animation-name: life1;
+        animation-name: life1tablet;
         animation-duration: 1s;
         border-radius: 3px;
     
@@ -205,7 +232,7 @@
         width: 40px;
         height: 100%;
         background-color: gray;
-        animation-name: life2;
+        animation-name: life2tablet;
         animation-duration: 1s;
         border-radius: 3px;
     }
@@ -214,7 +241,7 @@
         height: 100%;
         background-color: gray;
         border-radius: 3px;
-        animation-name: life3;
+        animation-name: life3tablet;
         animation-duration: 1s;
     }
     .w-50 .box_result .life-4{
@@ -222,7 +249,7 @@
         border-radius: 3px;
         height: 100%;
         background-color: gray;
-        animation-name: life4;
+        animation-name: life4tablet;
         animation-duration: 1s;
     }
     .w-50 .box_result .life-5{
@@ -231,12 +258,19 @@
         height: 100%;
         background-color: grey;
     }
+    .w-50 span{
+        color: white;
+        background: #424040cc;
+        padding: 6px;
+        border-radius: 5px;
+        font-size: .6rem;
+    }
 
 
 
     /* keyframes */
     /* vita animazione  */
-@keyframes life1 {
+@keyframes life1tablet {
     0% {
         width: 0;
         height: 100%;
@@ -249,7 +283,7 @@
         height: 100%;
         background-color: gray;
     }
-}@keyframes life2 {
+}@keyframes life2tablet {
     0% {
         width: 20px;
         height: 100%;
@@ -262,7 +296,7 @@
         height: 100%;
         background-color: gray;
     }
-}@keyframes life3 {
+}@keyframes life3tablet {
     0% {
         width: 40px;
         height: 100%;
@@ -275,7 +309,7 @@
         height: 100%;
         background-color: gray;
     }
-}@keyframes life4 {
+}@keyframes life4tablet {
     0% {
         width: 60px;
         height: 100%;
@@ -294,7 +328,12 @@
 
 /* fino a 440px cambio vita  */
 @media all and (max-width :440px){
-    
+    .button_container {
+        padding: 16px;
+    }
+    .button_container .btnDefault {
+        width: 30%;
+    }
     .w-50 .box_result .life{
         width: 60px;
         height: 10px;
@@ -306,7 +345,7 @@
         width: 12px;
         height: 100%;
         background-color: gray;
-        animation-name: life1;
+        animation-name: life1mobile;
         animation-duration: 1s;
         border-radius: 3px;
     
@@ -315,7 +354,7 @@
         width: 24px;
         height: 100%;
         background-color: gray;
-        animation-name: life2;
+        animation-name: life2mobile;
         animation-duration: 1s;
         border-radius: 3px;
     }
@@ -324,7 +363,7 @@
         height: 100%;
         background-color: gray;
         border-radius: 3px;
-        animation-name: life3;
+        animation-name: life3mobile;
         animation-duration: 1s;
     }
     .w-50 .box_result .life-4{
@@ -332,7 +371,7 @@
         border-radius: 3px;
         height: 100%;
         background-color: gray;
-        animation-name: life4;
+        animation-name: life4mobile;
         animation-duration: 1s;
     }
     .w-50 .box_result .life-5{
@@ -346,7 +385,7 @@
 
     /* keyframes */
     /* vita animazione  */
-@keyframes life1 {
+@keyframes life1mobile {
     0% {
         width: 0;
         height: 100%;
@@ -359,7 +398,7 @@
         height: 100%;
         background-color: gray;
     }
-}@keyframes life2 {
+}@keyframes life2mobile {
     0% {
         width: 12px;
         height: 100%;
@@ -372,7 +411,7 @@
         height: 100%;
         background-color: gray;
     }
-}@keyframes life3 {
+}@keyframes life3mobile {
     0% {
         width: 24px;
         height: 100%;
@@ -385,7 +424,7 @@
         height: 100%;
         background-color: gray;
     }
-}@keyframes life4 {
+}@keyframes life4mobile {
     0% {
         width: 36px;
         height: 100%;
