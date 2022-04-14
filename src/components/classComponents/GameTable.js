@@ -7,6 +7,7 @@ import './GameTable.css'
 // import components 
 
 import UiButton from "../funcComponents/ui/uiButton/UiButton";
+import SheldonAdvisor from "../funcComponents/SheldonAdvisor";
 
 //images
 import sheldon_cpu from "../../assets/images/sheldon_cpu.png"
@@ -21,7 +22,7 @@ import spock from "../../assets/images/spock.png"
 import game_audio from "../../assets/audio/game_audio.mp3"
 
 // import utils 
-import { calcMatch, sheldonIsTooSmartForYou, iaDecision } from '../../utils/utils'
+import { calcMatch, sheldonIsTooSmartForYou, iaDecision, powerPlay } from '../../utils/utils'
 
 class GameTable extends Component {
     constructor(props) {
@@ -194,6 +195,7 @@ class GameTable extends Component {
             }
 
             this.state.timeToBluff = false;
+
         }
         else {
 
@@ -242,10 +244,10 @@ class GameTable extends Component {
             let cpuScore = localStorage.getItem("cpuScore")
             let bluffWorks = localStorage.getItem("bluffWorks")
             let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff")
-
             const timer = setTimeout(() => {
-                /*  let cpu_score = Math.floor(Math.random() * 5); */
-                let cpu_score = sheldonIsTooSmartForYou(cpu_bluff, playerBeliveInBluff, bluffWorks, nOfGames)
+
+                let cpu_score = sheldonIsTooSmartForYou(cpu_bluff, playerBeliveInBluff, bluffWorks, nOfGames, powerPlay(user_score))
+
                 let result = calcMatch(user_score, cpu_score)
 
                 if (result.vinceUser == true) {
@@ -312,9 +314,7 @@ class GameTable extends Component {
     render() {
         return (
             <>
-                {/* <p>Round n  {this.state.sNumOfGames}</p> */}
                 <div className="game_table_container">
-
                     <div className="user_box w-50">
                         <img className="img-set pb_7" src={geology_user} alt="" />
                         <p> Studente di Geologia(Tu)</p>
@@ -391,6 +391,14 @@ class GameTable extends Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="sheldon_noisy">
+
+                    <SheldonAdvisor
+                        children={
+                            <div className="sheldon_text"></div>
+                        }
+                    />
                 </div>
 
             </>

@@ -1,0 +1,6 @@
+.sheldon_head{
+        height: 200px;
+        position: absolute;
+        bottom: 10rem;
+        z-index: 2;
+}

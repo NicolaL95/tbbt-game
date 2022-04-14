@@ -10,7 +10,6 @@ import Advertising from '../components/classComponents/Advertising';
 function Home() {
 
 
-
   return (
     <div className="Home">
       <UiHeader />
