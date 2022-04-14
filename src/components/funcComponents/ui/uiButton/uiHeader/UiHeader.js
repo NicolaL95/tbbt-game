@@ -36,7 +36,7 @@ function UiHeader() {
                 </li>
             </ul>
             <div className="account_info">
-                <p>Sheldor il conquistatore</p>
+                <p>Sheldon il conquistatore</p>
                 <p>Logout</p>
             </div>
         </header>
