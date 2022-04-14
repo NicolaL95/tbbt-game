@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from '../../../../../assets/images/TBBT_logo.svg'
+import logo from '../../../../assets/images/TBBT_logo.svg'
 
 // css 
 import './UiHeader.css'
