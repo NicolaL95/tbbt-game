@@ -21,6 +21,8 @@ import spock from "../../assets/images/spock.png"
 //audio
 import game_audio from "../../assets/audio/game_audio.mp3"
 import gameOverSound from "../../assets/audio/sfx-defeat4.mp3"
+import windSound from "../../assets/audio/bazinga.mp3"
+
 
 
 // import utils 
@@ -327,7 +329,13 @@ class GameTable extends Component {
             }, 1000)
 
         }
+        if (localStorage.getItem('userScore') > 4) {
+            const timer = setTimeout(() => {
+                new Audio(windSound).play();
+            }, 1000)
 
+        }
+        
         if ((localStorage.getItem('userScore')) > 4 || (localStorage.getItem('cpuScore')) > 4) {
             return true
         }
@@ -458,6 +466,8 @@ class GameTable extends Component {
             </>
         )
     }
+
+    // funzione render vita dinamica user
     calcLifeUser = () => {
         if (localStorage.getItem("cpuScore") == null) {
             return <div className="life">
@@ -492,7 +502,8 @@ class GameTable extends Component {
         }
 
     }
-
+    
+    // funzione render vita cpu dinamica 
     calcLifeCpu = () => {
         if (localStorage.getItem("userScore") == null) {
             return <div className="life">
@@ -527,6 +538,8 @@ class GameTable extends Component {
         }
 
     }
+
+    // funzione che ripulisce il localstorage 
     restart() {
         localStorage.clear();
     }
