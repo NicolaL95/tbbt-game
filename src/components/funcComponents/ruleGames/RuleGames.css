@@ -66,18 +66,24 @@
     flex-wrap: wrap;
 }
 .explane_rule video{
+    margin-top: 16px;
     width: 100%;
 }
 .explane_rule img{
     margin-top: 30px;
+    width: 40%;
 }
-.explane_rule p{
-    width: 60%;
-    line-height: 1.7;
+.explane_rule .paragr{
+    width: 50%;
     margin: 24px 0;
     text-align: center;
 }
+.explane_rule p{
+    text-align: center;
+    line-height: 1.3;
+    margin: 12px 0;
 
+}
 
 @media all and (max-width:768px){
     #rule_games .challenge{
@@ -92,13 +98,18 @@
     object-fit: contain;
     border-top-right-radius: 0;
     }
+    .explane_rule .paragr{
+        width: 100%;
+        text-align: center;
+
+    }
+    .explane_rule img{
+
+        width: 100%;
+    }
 }
 
 @media all and (max-width:600px){
-    .explane_rule p{
-        width: 100%;
-
-    }
     .explane_rule img{
         margin: 30px auto;
     }

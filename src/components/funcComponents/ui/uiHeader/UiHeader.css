@@ -8,7 +8,8 @@ header{
         border-radius: 3px;
         width: 100%;
         color: white;
-        padding:16px
+        padding:16px;
+        z-index: 3;
 }
 header picture{
     max-width: 20%;

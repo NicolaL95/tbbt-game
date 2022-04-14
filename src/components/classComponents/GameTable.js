@@ -528,7 +528,7 @@ class GameTable extends Component {
         } else if (localStorage.getItem("cpuScore") == 5) {
             return <div className="loseGame">
 
-                <a onClick={this.restart} href="http://localhost:3000/">cliccami</a>
+                <a onClick={this.restart} href="http://localhost:3000/">Riprova !</a>
 
             </div>
         }

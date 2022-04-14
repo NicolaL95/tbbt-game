@@ -27,20 +27,24 @@ function RuleGames(props) {
 
             <div id="question_challenge">
                 <span>Accetti la sfida? </span>
-                <UiButton
-                    callback={playGame}
-                    nameBtn={'Gioca!'}
-                    cssCustom={'playBtn'}
-                />
             </div>
             <div className="explane_rule">
+                <h2> Regole del gioco  </h2>
                 <video controls>
                     <source src={rule} type="video/mp4">
 
                     </source>
                 </video>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg/220px-Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg.png"/> 
-                <p>Le regole sono semplici: le forbici tagliano la carta; la carta copre la pietra; la pietra schiaccia la lucertola; la lucertola avvelena Spock; Spock rompe le forbici; le forbici decapitano la lucertola; la lucertola mangia la carta; la carta invalida Spock; Spock vaporizza il sasso; il sasso rompe le forbici</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg/220px-Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg.png" />
+                <div className="paragr">
+                    <p>Le regole sono semplici: le forbici tagliano la carta; la carta copre la pietra; la pietra schiaccia la lucertola; la lucertola avvelena Spock; Spock rompe le forbici; le forbici decapitano la lucertola; la lucertola mangia la carta; la carta invalida Spock; Spock vaporizza il sasso; il sasso rompe le forbici</p>
+                    <p>
+                        Inoltre abbiamo aggiunto un ulteriore funzionalità : IL BLUFF
+                    </p>
+                    <p>
+                        La prima giocata sarà appunto la dichiarazione di Bluff e si contraddistingue con il bordo rosso attorno al pulsante, successivamente effettuerai la tua giocata vera e propria scegliendo se credere o meno al bluff di Sceldon
+                    </p>
+                </div>
 
             </div>
 
