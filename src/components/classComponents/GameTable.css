@@ -14,8 +14,17 @@
     background-image: url(https://us.123rf.com/450wm/vasilyrosca/vasilyrosca2004/vasilyrosca200400260/145426048-sfondo-punteggio-vittoria-glitch-gioco-retr%C3%B2-videogioco-vinci-testo-effetto-glitch.jpg?ver=6);
     background-size: cover;
     background-position: center;
-    display: flex;
-    padding: 24px ;
+    padding: 12px ;
+    text-align: center;
+}
+.winGame a{
+    color:white;
+    display: inline-block;
+    font-size: .5rem;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
 }
 .loseGame{
     width: 60%;
@@ -23,10 +32,25 @@
     background-image: url(https://www.usb.it/fileadmin/_processed_/e/3/csm_Gameover-web-final_2510fc2ba4.jpg);
     background-size: cover;
     background-position: center;
-    display: flex;
     padding: 24px ;
 }
-
+.loseGame a{
+    color:rgb(88, 88, 196);
+    display: inline-block;
+    font-size: 1,3rem;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.user_box.w-50{
+    border-right: 1px solid white;
+}
+.cpu_box.w-50{
+    border-left: 1px solid white;
+}
 .w-50{
     width: 50%;
     display: flex;
@@ -48,28 +72,40 @@
     width: 40px;
     height: 100%;
     background-color: gray;
+    animation-name: life1;
+    animation-duration: 1s;
+    border-radius: 3px;
 
 }
 .w-50 .box_result .life-2{
     width: 80px;
     height: 100%;
     background-color: gray;
+    animation-name: life2;
+    animation-duration: 1s;
+    border-radius: 3px;
 }
 .w-50 .box_result .life-3{
     width: 120px;
     height: 100%;
     background-color: gray;
+    border-radius: 3px;
+    animation-name: life3;
+    animation-duration: 1s;
 }
 .w-50 .box_result .life-4{
     width: 160px;
+    border-radius: 3px;
     height: 100%;
     background-color: gray;
+    animation-name: life4;
+    animation-duration: 1s;
 }
 .w-50 .box_result .life-5{
+    border-radius: 3px;
     width: 200px;
     height: 100%;
     background-color: grey;
-
 }
 
 
@@ -78,8 +114,11 @@
     align-items: flex-end;
 }
 
-.w-50 p{
+.w-50 span{
     color: white;
+    background: #424040cc;
+    padding: 6px;
+    border-radius: 5px;
 }
 
 .mb{
@@ -102,8 +141,8 @@
 }
 
 .img-set{
-    width: 70px;
-    height: auto;
+    width: auto;
+    height: 70px;
     object-fit: cover;
     margin-bottom: 16px;
 }
@@ -153,9 +192,306 @@
     }
 
 
-@media all and (max-width :768px){
+@media all and (max-width :1100px){
     .game_table_container{
         width: 100%;
     }
     
+}
+
+
+
+/* fino a 768px cambio vita  */
+@media all and (max-width :768px){
+    .loseGame{
+        width: 100%;
+    }
+    .winGame{
+        width: 100%;
+    }
+    .button_container .btnDefault {
+        width: 30%;
+    }
+    .w-50 .box_result .life{
+        width: 100px;
+        height: 10px;
+        background-color: chartreuse;
+        border-radius: 3px;
+        margin: 0 16px;
+    }
+    .w-50 .box_result .life-1{
+        width: 20px;
+        height: 100%;
+        background-color: gray;
+        animation-name: life1tablet;
+        animation-duration: 1s;
+        border-radius: 3px;
+    
+    }
+    .w-50 .box_result .life-2{
+        width: 40px;
+        height: 100%;
+        background-color: gray;
+        animation-name: life2tablet;
+        animation-duration: 1s;
+        border-radius: 3px;
+    }
+    .w-50 .box_result .life-3{
+        width: 60px;
+        height: 100%;
+        background-color: gray;
+        border-radius: 3px;
+        animation-name: life3tablet;
+        animation-duration: 1s;
+    }
+    .w-50 .box_result .life-4{
+        width: 80px;
+        border-radius: 3px;
+        height: 100%;
+        background-color: gray;
+        animation-name: life4tablet;
+        animation-duration: 1s;
+    }
+    .w-50 .box_result .life-5{
+        border-radius: 3px;
+        width: 100px;
+        height: 100%;
+        background-color: grey;
+    }
+    .w-50 span{
+        color: white;
+        background: #424040cc;
+        padding: 6px;
+        border-radius: 5px;
+        font-size: .6rem;
+    }
+
+
+
+    /* keyframes */
+    /* vita animazione  */
+@keyframes life1tablet {
+    0% {
+        width: 0;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 20px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life2tablet {
+    0% {
+        width: 20px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 40px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life3tablet {
+    0% {
+        width: 40px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 60px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life4tablet {
+    0% {
+        width: 60px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 80px;
+        height: 100%;
+        background-color: gray;
+    }
+}
+}
+
+
+/* fino a 440px cambio vita  */
+@media all and (max-width :440px){
+    .button_container {
+        padding: 16px;
+    }
+    .button_container .btnDefault {
+        width: 30%;
+    }
+    .w-50 .box_result .life{
+        width: 60px;
+        height: 10px;
+        background-color: chartreuse;
+        border-radius: 3px;
+        margin: 0 16px;
+    }
+    .w-50 .box_result .life-1{
+        width: 12px;
+        height: 100%;
+        background-color: gray;
+        animation-name: life1mobile;
+        animation-duration: 1s;
+        border-radius: 3px;
+    
+    }
+    .w-50 .box_result .life-2{
+        width: 24px;
+        height: 100%;
+        background-color: gray;
+        animation-name: life2mobile;
+        animation-duration: 1s;
+        border-radius: 3px;
+    }
+    .w-50 .box_result .life-3{
+        width: 36px;
+        height: 100%;
+        background-color: gray;
+        border-radius: 3px;
+        animation-name: life3mobile;
+        animation-duration: 1s;
+    }
+    .w-50 .box_result .life-4{
+        width: 48px;
+        border-radius: 3px;
+        height: 100%;
+        background-color: gray;
+        animation-name: life4mobile;
+        animation-duration: 1s;
+    }
+    .w-50 .box_result .life-5{
+        border-radius: 3px;
+        width: 60px;
+        height: 100%;
+        background-color: grey;
+    }
+
+
+
+    /* keyframes */
+    /* vita animazione  */
+@keyframes life1mobile {
+    0% {
+        width: 0;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 12px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life2mobile {
+    0% {
+        width: 12px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 24px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life3mobile {
+    0% {
+        width: 24px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 36px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life4mobile {
+    0% {
+        width: 36px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 48px;
+        height: 100%;
+        background-color: gray;
+    }
+}
+}
+
+
+/* vita animazione  */
+@keyframes life1 {
+    0% {
+        width: 0;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 40px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life2 {
+    0% {
+        width: 40px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 80px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life3 {
+    0% {
+        width: 80px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 120px;
+        height: 100%;
+        background-color: gray;
+    }
+}@keyframes life4 {
+    0% {
+        width: 120px;
+        height: 100%;
+        background-color: red;
+
+    }
+
+    100%{
+        width: 160px;
+        height: 100%;
+        background-color: gray;
+    }
 }

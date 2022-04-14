@@ -1,8 +1,8 @@
 import GameTable from '../components/classComponents/GameTable';
 import './Home.css';
 import UiFooter from '../components/funcComponents/ui/uiFooter/UiFooter';
-import UiHeader from "../components/funcComponents/ui/uiButton/uiHeader/UiHeader"
-import RuleGames from '../components/funcComponents/ruleGames/RuleGames'
+import UiHeader from "../components/funcComponents/ui/uiHeader/UiHeader";
+import RuleGames from '../components/funcComponents/ruleGames/RuleGames';
 import Advertising from '../components/classComponents/Advertising';
 
 

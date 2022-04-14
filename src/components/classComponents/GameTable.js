@@ -20,6 +20,8 @@ import spock from "../../assets/images/spock.png"
 
 //audio
 import game_audio from "../../assets/audio/game_audio.mp3"
+import gameOverSound from "../../assets/audio/sfx-defeat4.mp3"
+
 
 // import utils 
 import { calcMatch, sheldonIsTooSmartForYou, iaDecision, powerPlay } from '../../utils/utils'
@@ -312,6 +314,13 @@ class GameTable extends Component {
         }
     }
     endGame = () => {
+        if (localStorage.getItem('cpuScore') > 4) {
+            const timer = setTimeout(() => {
+                new Audio(gameOverSound).play();
+            }, 1000)
+
+        }
+
         if ((localStorage.getItem('userScore')) > 4 || (localStorage.getItem('cpuScore')) > 4) {
             return true
         }
@@ -328,12 +337,12 @@ class GameTable extends Component {
                         <div className="game_table_container">
 
                             <div className="user_box w-50">
-                                <div>
+                                <div style={{ marginBottom: 32 }}>
                                     <div className='box_result'>
                                         <img className="img-set pb_7" src={geology_user} alt="" />
                                         {this.calcLifeUser()}
                                     </div>
-                                    <p> Studente di Geologia(Tu)</p>
+                                    <span> Studente di Geologia(Tu)</span>
                                 </div>
 
                                 <div className="button_container">
@@ -378,7 +387,9 @@ class GameTable extends Component {
                                         {this.calcLifeCpu()}
                                         <img className="img-set" src={sheldon_cpu} alt="" />
                                     </div>
-                                    <p style={{ textAlign: 'end' }}>Sheldon</p>
+                                    <div style={{ textAlign: 'end', marginBottom: 32 }}>
+                                        <span >Sheldon</span>
+                                    </div>
 
                                 </div>
 
@@ -517,7 +528,7 @@ class GameTable extends Component {
         } else if (localStorage.getItem("cpuScore") == 5) {
             return <div className="loseGame">
 
-                <a onClick={this.restart} href="http://localhost:3000/">cliccami</a>
+                <a onClick={this.restart} href="http://localhost:3000/">Riprova !</a>
 
             </div>
         }
