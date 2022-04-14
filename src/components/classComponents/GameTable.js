@@ -504,13 +504,22 @@ class GameTable extends Component {
         }
 
     }
+    restart() {
+        localStorage.clear();
+    }
 
     // user win game render 
     reportGame = () => {
         if (localStorage.getItem("userScore") == 5) {
-            return <div className="winGame"></div>
+            return <div className="winGame">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Clicca qui per riscattare il tuo buono sconto di 10 euro</a>
+            </div>
         } else if (localStorage.getItem("cpuScore") == 5) {
-            return <div className="loseGame"></div>
+            return <div className="loseGame">
+
+                <a onClick={this.restart} href="http://localhost:3000/">cliccami</a>
+
+            </div>
         }
     }
 }
