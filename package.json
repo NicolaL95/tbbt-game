@@ -2,7 +2,7 @@
   "name": "tbbt-game",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://{username}.github.io",
+  "homepage": "https://nicolaL95.github.io/tbbt-game/",
   "dependencies": {
     "cra-template": "1.1.3",
     "gh-pages": "^3.2.3",
