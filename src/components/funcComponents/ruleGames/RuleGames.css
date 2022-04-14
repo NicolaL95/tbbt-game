@@ -55,6 +55,21 @@
     border-style: none;
     cursor: pointer;
 }
+.explane_rule{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px;
+    background-color: rgb(88, 88, 196);
+    margin: 32px 0 ;
+    color: white;
+}
+.explane_rule video{
+}
+.explane_rule p{
+    width: 40%;
+    line-height: 1.7
+}
 
 
 @media all and (max-width:768px){

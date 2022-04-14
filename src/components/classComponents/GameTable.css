@@ -6,19 +6,80 @@
     background-size: cover;
     background-position: center;
     display: flex;
-    padding: 24px 0;
+    padding: 24px ;
+}
+.winGame{
+    width: 60%;
+    min-height: 400px;
+    background-image: url(https://us.123rf.com/450wm/vasilyrosca/vasilyrosca2004/vasilyrosca200400260/145426048-sfondo-punteggio-vittoria-glitch-gioco-retr%C3%B2-videogioco-vinci-testo-effetto-glitch.jpg?ver=6);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    padding: 24px ;
+}
+.loseGame{
+    width: 60%;
+    min-height: 400px;
+    background-image: url(https://www.usb.it/fileadmin/_processed_/e/3/csm_Gameover-web-final_2510fc2ba4.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    padding: 24px ;
 }
 
 .w-50{
     width: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+.w-50 .box_result{
+    display: flex;
     align-items: center;
+}
+.w-50 .box_result .life{
+    width: 200px;
+    height: 10px;
+    background-color: chartreuse;
+    border-radius: 3px;
+    margin: 0 16px;
+}
+.w-50 .box_result .life-1{
+    width: 40px;
+    height: 100%;
+    background-color: gray;
+
+}
+.w-50 .box_result .life-2{
+    width: 80px;
+    height: 100%;
+    background-color: gray;
+}
+.w-50 .box_result .life-3{
+    width: 120px;
+    height: 100%;
+    background-color: gray;
+}
+.w-50 .box_result .life-4{
+    width: 160px;
+    height: 100%;
+    background-color: gray;
+}
+.w-50 .box_result .life-5{
+    width: 200px;
+    height: 100%;
+    background-color: grey;
+
+}
+
+
+
+.w-50.cpu_box{
+    align-items: flex-end;
 }
 
 .w-50 p{
     color: white;
-    font-size: 30px;
 }
 
 .mb{
@@ -41,9 +102,10 @@
 }
 
 .img-set{
-    width: auto;
-    height: 300px;
+    width: 70px;
+    height: auto;
     object-fit: cover;
+    margin-bottom: 16px;
 }
 
 .button_container{

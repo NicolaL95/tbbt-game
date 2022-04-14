@@ -309,92 +309,196 @@ class GameTable extends Component {
 
         }
     }
+    endGame = () => {
+        if ((localStorage.getItem('userScore')) > 4 || (localStorage.getItem('cpuScore')) > 4) {
+            return true
+        }
+        return false
+
+    }
     render() {
         return (
             <>
-                {/* <p>Round n  {this.state.sNumOfGames}</p> */}
-                <div className="game_table_container">
+                {
+                    !this.endGame() &&
 
-                    <div className="user_box w-50">
-                        <img className="img-set pb_7" src={geology_user} alt="" />
-                        <p> Studente di Geologia(Tu)</p>
-                        <p className="mb"> {this.state.sUserScore}</p>
-                        <div className="button_container">
-                            <div className="b1">
-                                <UiButton
-                                    style={{ marginRight: 16 }}
-                                    children={<img className={this.state.hasChoicePlayer.paperChoice ? 'choice_border' : this.state.hasBluffPlayer.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
-                                    id={0}
-                                    callback={this.playGame}
-                                />
-                                <UiButton
-                                    style={{ marginLeft: 16 }}
-                                    children={<img className={this.state.hasChoicePlayer.scissorChoice ? 'choice_border' : this.state.hasBluffPlayer.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
-                                    id={1}
-                                    callback={this.playGame}
-                                />
+                    <div className="game_table_container">
+
+                        <div className="user_box w-50">
+                            <div>
+                                <div className='box_result'>
+                                    <img className="img-set pb_7" src={geology_user} alt="" />
+                                    {this.calcLifeUser()}
+                                </div>
+                                <p> Studente di Geologia(Tu)</p>
                             </div>
-                            <div className="b2">
-                                <UiButton
-                                    children={<img className={this.state.hasChoicePlayer.rockChoice ? 'choice_border' : this.state.hasBluffPlayer.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
-                                    id={2}
-                                    callback={this.playGame}
-                                />
-                                <UiButton
-                                    children={<img className={this.state.hasChoicePlayer.lizardChoice ? 'choice_border' : this.state.hasBluffPlayer.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
-                                    id={3}
-                                    callback={this.playGame}
-                                />
+
+                            <div className="button_container">
+                                <div className="b1">
+                                    <UiButton
+                                        style={{ marginRight: 16 }}
+                                        children={<img className={this.state.hasChoicePlayer.paperChoice ? 'choice_border' : this.state.hasBluffPlayer.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
+                                        id={0}
+                                        callback={this.playGame}
+                                    />
+                                    <UiButton
+                                        style={{ marginLeft: 16 }}
+                                        children={<img className={this.state.hasChoicePlayer.scissorChoice ? 'choice_border' : this.state.hasBluffPlayer.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
+                                        id={1}
+                                        callback={this.playGame}
+                                    />
+                                </div>
+                                <div className="b2">
+                                    <UiButton
+                                        children={<img className={this.state.hasChoicePlayer.rockChoice ? 'choice_border' : this.state.hasBluffPlayer.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
+                                        id={2}
+                                        callback={this.playGame}
+                                    />
+                                    <UiButton
+                                        children={<img className={this.state.hasChoicePlayer.lizardChoice ? 'choice_border' : this.state.hasBluffPlayer.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
+                                        id={3}
+                                        callback={this.playGame}
+                                    />
+                                </div>
+                                <div className="b3">
+                                    <UiButton
+                                        children={<img className={this.state.hasChoicePlayer.spockChoice ? 'choice_border' : this.state.hasBluffPlayer.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
+                                        id={4}
+                                        callback={this.playGame}
+                                    />
+                                </div>
                             </div>
-                            <div className="b3">
-                                <UiButton
-                                    children={<img className={this.state.hasChoicePlayer.spockChoice ? 'choice_border' : this.state.hasBluffPlayer.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
-                                    id={4}
-                                    callback={this.playGame}
-                                />
+                        </div>
+                        <div className="cpu_box w-50">
+                            <div>
+                                <div className='box_result'>
+                                    {this.calcLifeCpu()}
+                                    <img className="img-set" src={sheldon_cpu} alt="" />
+                                </div>
+                                <p style={{ textAlign: 'end' }}>Sheldon</p>
+
+                            </div>
+
+
+                            <div className="button_container">
+                                <div className="b1">
+                                    <UiButton
+                                        style={{ marginRight: 16 }}
+                                        children={<img className={this.state.hasChoiceCpu.paperChoice ? 'choice_border' : this.state.hasBluffCpu.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
+
+                                    />
+                                    <UiButton
+                                        style={{ marginLeft: 16 }}
+                                        children={<img className={this.state.hasChoiceCpu.scissorChoice ? 'choice_border' : this.state.hasBluffCpu.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
+                                    />
+                                </div>
+                                <div className="b2">
+                                    <UiButton
+                                        children={<img className={this.state.hasChoiceCpu.rockChoice ? 'choice_border' : this.state.hasBluffCpu.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
+
+
+                                    />
+                                    <UiButton
+                                        children={<img className={this.state.hasChoiceCpu.lizardChoice ? 'choice_border' : this.state.hasBluffCpu.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
+
+                                    />
+                                </div>
+                                <div className="b3">
+                                    <UiButton
+                                        children={<img className={this.state.hasChoiceCpu.spockChoice ? 'choice_border' : this.state.hasBluffCpu.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
+
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className="cpu_box w-50">
-                        <img className="img-set" src={sheldon_cpu} alt="" />
-                        <p>Sheldon</p>
-                        <p className="mb">{this.state.sCpuSCore}</p>
-
-                        <div className="button_container">
-                            <div className="b1">
-                                <UiButton
-                                    style={{ marginRight: 16 }}
-                                    children={<img className={this.state.hasChoiceCpu.paperChoice ? 'choice_border' : this.state.hasBluffCpu.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
-
-                                />
-                                <UiButton
-                                    style={{ marginLeft: 16 }}
-                                    children={<img className={this.state.hasChoiceCpu.scissorChoice ? 'choice_border' : this.state.hasBluffCpu.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
-                                />
-                            </div>
-                            <div className="b2">
-                                <UiButton
-                                    children={<img className={this.state.hasChoiceCpu.rockChoice ? 'choice_border' : this.state.hasBluffCpu.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
-
-
-                                />
-                                <UiButton
-                                    children={<img className={this.state.hasChoiceCpu.lizardChoice ? 'choice_border' : this.state.hasBluffCpu.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
-
-                                />
-                            </div>
-                            <div className="b3">
-                                <UiButton
-                                    children={<img className={this.state.hasChoiceCpu.spockChoice ? 'choice_border' : this.state.hasBluffCpu.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
-
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                }
+                {
+                    this.endGame() &&
+                    <>
+                        {this.reportGame()}
+                    </>
+                }
             </>
         )
+    }
+    calcLifeUser = () => {
+        if (localStorage.getItem("cpuScore") == null) {
+            return <div className="life">
+                <div>
+
+                </div>
+            </div>
+        } else if (localStorage.getItem("cpuScore") == 1) {
+            return <div className="life">
+                <div className="life-1"></div>
+            </div>
+        } else if (localStorage.getItem("cpuScore") == 2) {
+            return <div className="life">
+                <div className="life-2"></div>
+            </div>
+        } else if (localStorage.getItem("cpuScore") == 3) {
+            return <div className="life">
+                <div className="life-3"></div>
+            </div>
+        } else if (localStorage.getItem("cpuScore") == 4) {
+            return <div className="life">
+                <div className="life-4">
+
+                </div>
+            </div>
+        } else if (localStorage.getItem("cpuScore") == 5) {
+            return <div className="life">
+                <div className="life-5">
+
+                </div>
+            </div>
+        }
+
+    }
+
+    calcLifeCpu = () => {
+        if (localStorage.getItem("userScore") == null) {
+            return <div className="life">
+                <div>
+
+                </div>
+            </div>
+        } else if (localStorage.getItem("userScore") == 1) {
+            return <div className="life">
+                <div className="life-1"></div>
+            </div>
+        } else if (localStorage.getItem("userScore") == 2) {
+            return <div className="life">
+                <div className="life-2"></div>
+            </div>
+        } else if (localStorage.getItem("userScore") == 3) {
+            return <div className="life">
+                <div className="life-3"></div>
+            </div>
+        } else if (localStorage.getItem("userScore") == 4) {
+            return <div className="life">
+                <div className="life-4">
+
+                </div>
+            </div>
+        } else if (localStorage.getItem("userScore") == 5) {
+            return <div className="life">
+                <div className="life-5">
+
+                </div>
+            </div>
+        }
+
+    }
+
+    // user win game render 
+    reportGame = () => {
+        if (localStorage.getItem("userScore") == 5){
+            return <div className="winGame"></div>
+        } else if (localStorage.getItem("cpuScore") == 5){
+            return <div className="loseGame"></div>
+        }
     }
 }
 
