@@ -512,7 +512,7 @@ class GameTable extends Component {
     reportGame = () => {
         if (localStorage.getItem("userScore") == 5) {
             return <div className="winGame">
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Clicca qui per riscattare il tuo buono sconto di 10 euro</a>
+                <a onClick={this.restart} href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Clicca qui per riscattare il tuo buono sconto di 10 euro</a>
             </div>
         } else if (localStorage.getItem("cpuScore") == 5) {
             return <div className="loseGame">

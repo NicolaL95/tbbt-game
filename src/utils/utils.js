@@ -246,17 +246,25 @@ function calcMatch(user_choice, cpu_score) {
 
 function iaDecision(roundPlayed, playerWin, cpuWin) {
 
-    let bluffWorksCounter = localStorage.getItem("bluffWorks");
-    let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff")
+    let bluffWorksCounter = localStorage.getItem("bluffWorks") == null ? 0 : parseInt(localStorage.getItem("bluffWorks"));
+    console.log('bluffWorksCounter', bluffWorksCounter)
+    let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff") == null ? 0 : parseInt(localStorage.getItem("playerBeliveInBluff"));
+    console.log('playerBeliveInBluff', playerBeliveInBluff)
+
 
     if (cpuWin == true) {
         if (roundPlayed == 1 || (playerBeliveInBluff == 0 && bluffWorksCounter == 0)) {
+
             bluffWorksCounter = bluffWorksCounter + 2
+
         }
         else {
+
             bluffWorksCounter = bluffWorksCounter + 1
+
         }
         localStorage.setItem("bluffWorks", bluffWorksCounter)
+
     } else if (playerWin == true) {
         if (roundPlayed == 1 || (playerBeliveInBluff == 0 && bluffWorksCounter == 0)) {
             playerBeliveInBluff = playerBeliveInBluff + 2
@@ -276,37 +284,43 @@ function sheldonIsTooSmartForYou(bluffChoice, playerBeliveInBluff, bluffWorks, r
     let randomHalf = Math.random();
     let notBluff = Math.floor(Math.random() * 5);
 
+
     while (notBluff != bluffChoice) {
         notBluff = Math.floor(Math.random() * 5);
     }
-    if (randomChoice2 > 3) {
-        if (randomHalf < 0.5) {
-            finalChoice = powerPlay[0]
-        }
-        else {
-            finalChoice = powerPlay[1]
-        }
 
-    } else {
-        if (roundPlayed == 1 || playerBeliveInBluff == bluffWorks) {
-            if (randomChoice > 5) {
-                finalChoice = bluffChoice
-            } else {
-                finalChoice = notBluff
+    function smarterThanYou() {
+        if (randomChoice2 > 3) {
+            if (randomHalf < 0.5) {
+                finalChoice = powerPlay[0]
             }
-        } else if (bluffWorks > playerBeliveInBluff) {
-            if (randomChoice > 3) {
-                finalChoice = bluffChoice
-            } else {
-                finalChoice = notBluff
+            else {
+                finalChoice = powerPlay[1]
             }
+
         } else {
-            if (randomChoice > 3) {
-                finalChoice = notBluff
+            finalChoice = notBluff
+        }
+    }
 
-            } else {
-                finalChoice = bluffChoice
-            }
+    if (roundPlayed == 1 || playerBeliveInBluff == bluffWorks) {
+        if (randomChoice > 5) {
+            finalChoice = bluffChoice
+        } else {
+            smarterThanYou();
+        }
+    } else if (bluffWorks > playerBeliveInBluff) {
+        if (randomChoice > 3) {
+            finalChoice = bluffChoice
+        } else {
+            smarterThanYou();
+        }
+    } else {
+        if (randomChoice > 3) {
+            smarterThanYou();
+
+        } else {
+            finalChoice = bluffChoice
         }
     }
     return finalChoice
