@@ -62,6 +62,8 @@ let gadgets = [
 // funzione bluff
 
 // funzione calcolo risultato 
+// Utilizza l'id della giocata(es 0 = carta, 1 = forbici etc etc) del giocatore e della cpu come coordinate per ottenere il risultato della partita
+
 function calcMatch(user_choice, cpu_score) {
 
     let resultMatch = {
@@ -244,13 +246,12 @@ function calcMatch(user_choice, cpu_score) {
     return resultMatch
 }
 
+/* iaDecision imposta le variabili del localstorage  bluffWorks e playerBeliveInBluff in base all'andamento della partita.
+bluffWorks e playerBeliveInBluff istruiscono l'IA a compiere una scelta piuttosto che un altra. */
 function iaDecision(roundPlayed, playerWin, cpuWin) {
 
     let bluffWorksCounter = localStorage.getItem("bluffWorks") == null ? 0 : parseInt(localStorage.getItem("bluffWorks"));
-    console.log('bluffWorksCounter', bluffWorksCounter)
     let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff") == null ? 0 : parseInt(localStorage.getItem("playerBeliveInBluff"));
-    console.log('playerBeliveInBluff', playerBeliveInBluff)
-
 
     if (cpuWin == true) {
         if (roundPlayed == 1 || (playerBeliveInBluff == 0 && bluffWorksCounter == 0)) {
@@ -276,21 +277,32 @@ function iaDecision(roundPlayed, playerWin, cpuWin) {
     localStorage.setItem("playerBeliveInBluff", playerBeliveInBluff)
 }
 
+
+/* sheldonIsTooSmartForYou imposta il comportamento della cpu su una base probabilistica 
+utilizza rispettivamente i seguenti parametri: bluff della cpu, numero di volte in cui la cpu ha vinto e perso, round giocati e mosse che vincerebbero contro il bluff dell'avversario */
+
 function sheldonIsTooSmartForYou(bluffChoice, playerBeliveInBluff, bluffWorks, roundPlayed, powerPlay) {
 
     let finalChoice = null;
-    let randomChoice = Math.floor(Math.random() * 12);
-    let randomChoice2 = Math.floor(Math.random() * 12);
+
+    let randomChoice = {
+        randomChoice1: Math.floor(Math.random() * 12),
+        randomChoice2: Math.floor(Math.random() * 12)
+    }
+
     let randomHalf = Math.random();
     let notBluff = Math.floor(Math.random() * 5);
 
+    /* Ottiene un id(associato ad una giocata, diverso dal bluff) */
 
     while (notBluff != bluffChoice) {
         notBluff = Math.floor(Math.random() * 5);
     }
 
+    /* imposta la scelta come una delle due(scelte randomicamente) giocate che vincerebbero contro il buff dell'avversario */
+
     function smarterThanYou() {
-        if (randomChoice2 > 3) {
+        if (randomChoice.randomChoice2 > 3) {
             if (randomHalf < 0.5) {
                 finalChoice = powerPlay[0]
             }
@@ -303,14 +315,15 @@ function sheldonIsTooSmartForYou(bluffChoice, playerBeliveInBluff, bluffWorks, r
         }
     }
 
+    /* Utilizza una base di probabilita' basata sul 50% oppure sul 33%/66% */
     if (roundPlayed == 1 || playerBeliveInBluff == bluffWorks) {
-        if (randomChoice > 5) {
+        if (randomChoice.randomChoice1 > 5) {
             finalChoice = bluffChoice
         } else {
             smarterThanYou();
         }
     } else if (bluffWorks > playerBeliveInBluff) {
-        if (randomChoice > 3) {
+        if (randomChoice.randomChoice1 > 3) {
             finalChoice = bluffChoice
         } else {
             smarterThanYou();
@@ -326,7 +339,7 @@ function sheldonIsTooSmartForYou(bluffChoice, playerBeliveInBluff, bluffWorks, r
     return finalChoice
 
 }
-
+/* Ottiene le due giocate che vincerebbero contro il bluff dell'avversario */
 function powerPlay(bluff) {
     let winningpPlay = []
     for (let index = 0; index < 5; index++) {

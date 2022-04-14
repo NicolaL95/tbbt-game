@@ -7,7 +7,9 @@ import './UiButton.css'
 
 function UiButton(props) {
     function clickBtn() {
-        return props.callback(props.id)
+        if (props.gameInProgress) {
+            return props.callback(props.id)
+        }
     }
     return (
 
@@ -21,7 +23,9 @@ function UiButton(props) {
 // default props 
 
 UiButton.defaultProps = {
-    cssCustom: 'btnDefault'
+    cssCustom: 'btnDefault',
+    callback: function doNothing() {
+    }
 }
 
 // propTypes 

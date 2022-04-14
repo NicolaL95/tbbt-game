@@ -34,6 +34,7 @@ class GameTable extends Component {
             sUserScore: 0,
             sCpuSCore: 0,
             timeToBluff: true,
+            inProgress: true,
             hasBluffPlayer: {
                 paperBluff: false,
                 scissorBluff: false,
@@ -84,7 +85,7 @@ class GameTable extends Component {
 
 
         let cpu_bluff = Math.floor(Math.random() * 5);
-
+        /* imposta gli stati che permettono l'aggiunta del bordo rosso o verde */
         if (this.state.timeToBluff) {
             this.setState({
                 hasBluffPlayer: {
@@ -195,8 +196,10 @@ class GameTable extends Component {
                     })
                     break;
             }
+            this.setState({
+                timeToBluff: false
+            })
 
-            this.state.timeToBluff = false;
 
         }
         else {
@@ -246,6 +249,10 @@ class GameTable extends Component {
             let cpuScore = localStorage.getItem("cpuScore")
             let bluffWorks = localStorage.getItem("bluffWorks")
             let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff")
+            this.setState({
+                inProgress: false
+            })
+            /* Attiva la giocata definitiva dopo 2 secondi(Tempo della riproduzione dell'audio) */
             const timer = setTimeout(() => {
 
                 let cpu_score = sheldonIsTooSmartForYou(cpu_bluff, playerBeliveInBluff, bluffWorks, nOfGames, powerPlay(user_score))
@@ -307,7 +314,10 @@ class GameTable extends Component {
                     sCpuSCore: cpuScore,
                     timeToBluff: true,
                 })
-                console.log(result);
+                this.setState({
+                    inProgress: true
+                })
+
             }
                 , 2000);
 
@@ -351,12 +361,14 @@ class GameTable extends Component {
                                             style={{ marginRight: 16 }}
                                             children={<img className={this.state.hasChoicePlayer.paperChoice ? 'choice_border' : this.state.hasBluffPlayer.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
                                             id={0}
+                                            gameInProgress={this.state.inProgress}
                                             callback={this.playGame}
                                         />
                                         <UiButton
                                             style={{ marginLeft: 16 }}
                                             children={<img className={this.state.hasChoicePlayer.scissorChoice ? 'choice_border' : this.state.hasBluffPlayer.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
                                             id={1}
+                                            gameInProgress={this.state.inProgress}
                                             callback={this.playGame}
                                         />
                                     </div>
@@ -364,11 +376,13 @@ class GameTable extends Component {
                                         <UiButton
                                             children={<img className={this.state.hasChoicePlayer.rockChoice ? 'choice_border' : this.state.hasBluffPlayer.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
                                             id={2}
+                                            gameInProgress={this.state.inProgress}
                                             callback={this.playGame}
                                         />
                                         <UiButton
                                             children={<img className={this.state.hasChoicePlayer.lizardChoice ? 'choice_border' : this.state.hasBluffPlayer.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
                                             id={3}
+                                            gameInProgress={this.state.inProgress}
                                             callback={this.playGame}
                                         />
                                     </div>
@@ -376,6 +390,7 @@ class GameTable extends Component {
                                         <UiButton
                                             children={<img className={this.state.hasChoicePlayer.spockChoice ? 'choice_border' : this.state.hasBluffPlayer.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
                                             id={4}
+                                            gameInProgress={this.state.inProgress}
                                             callback={this.playGame}
                                         />
                                     </div>
