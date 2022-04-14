@@ -33,6 +33,7 @@
 .choice_border{
     border: 5px solid greenyellow;
     border-radius: 50%;
+    transform: scale(1.3);
 }
 
 .pb_7{

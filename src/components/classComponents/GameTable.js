@@ -320,31 +320,39 @@ class GameTable extends Component {
                         <p> Studente di Geologia(Tu)</p>
                         <p className="mb"> {this.state.sUserScore}</p>
                         <div className="button_container">
-                            <UiButton
-                                children={<img className={this.state.hasChoicePlayer.paperChoice ? 'choice_border' : this.state.hasBluffPlayer.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
-                                id={0}
-                                callback={this.playGame}
-                            />
-                            <UiButton
-                                children={<img className={this.state.hasChoicePlayer.scissorChoice ? 'choice_border' : this.state.hasBluffPlayer.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
-                                id={1}
-                                callback={this.playGame}
-                            />
-                            <UiButton
-                                children={<img className={this.state.hasChoicePlayer.rockChoice ? 'choice_border' : this.state.hasBluffPlayer.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
-                                id={2}
-                                callback={this.playGame}
-                            />
-                            <UiButton
-                                children={<img className={this.state.hasChoicePlayer.lizardChoice ? 'choice_border' : this.state.hasBluffPlayer.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
-                                id={3}
-                                callback={this.playGame}
-                            />
-                            <UiButton
-                                children={<img className={this.state.hasChoicePlayer.spockChoice ? 'choice_border' : this.state.hasBluffPlayer.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
-                                id={4}
-                                callback={this.playGame}
-                            />
+                            <div className="b1">
+                                <UiButton
+                                    style={{ marginRight: 16 }}
+                                    children={<img className={this.state.hasChoicePlayer.paperChoice ? 'choice_border' : this.state.hasBluffPlayer.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
+                                    id={0}
+                                    callback={this.playGame}
+                                />
+                                <UiButton
+                                    style={{ marginLeft: 16 }}
+                                    children={<img className={this.state.hasChoicePlayer.scissorChoice ? 'choice_border' : this.state.hasBluffPlayer.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
+                                    id={1}
+                                    callback={this.playGame}
+                                />
+                            </div>
+                            <div className="b2">
+                                <UiButton
+                                    children={<img className={this.state.hasChoicePlayer.rockChoice ? 'choice_border' : this.state.hasBluffPlayer.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
+                                    id={2}
+                                    callback={this.playGame}
+                                />
+                                <UiButton
+                                    children={<img className={this.state.hasChoicePlayer.lizardChoice ? 'choice_border' : this.state.hasBluffPlayer.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
+                                    id={3}
+                                    callback={this.playGame}
+                                />
+                            </div>
+                            <div className="b3">
+                                <UiButton
+                                    children={<img className={this.state.hasChoicePlayer.spockChoice ? 'choice_border' : this.state.hasBluffPlayer.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
+                                    id={4}
+                                    callback={this.playGame}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="cpu_box w-50">
@@ -353,27 +361,34 @@ class GameTable extends Component {
                         <p className="mb">{this.state.sCpuSCore}</p>
 
                         <div className="button_container">
-                            <UiButton
-                                children={<img className={this.state.hasChoiceCpu.paperChoice ? 'choice_border' : this.state.hasBluffCpu.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
+                            <div className="b1">
+                                <UiButton
+                                    style={{ marginRight: 16 }}
+                                    children={<img className={this.state.hasChoiceCpu.paperChoice ? 'choice_border' : this.state.hasBluffCpu.paperBluff ? 'bluff_border' : ''} src={carta} alt="" />}
 
-                            />
-                            <UiButton
-                                children={<img className={this.state.hasChoiceCpu.scissorChoice ? 'choice_border' : this.state.hasBluffCpu.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
+                                />
+                                <UiButton
+                                    style={{ marginLeft: 16 }}
+                                    children={<img className={this.state.hasChoiceCpu.scissorChoice ? 'choice_border' : this.state.hasBluffCpu.scissorBluff ? 'bluff_border' : ''} src={forbici} alt="" />}
+                                />
+                            </div>
+                            <div className="b2">
+                                <UiButton
+                                    children={<img className={this.state.hasChoiceCpu.rockChoice ? 'choice_border' : this.state.hasBluffCpu.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
 
-                            />
-                            <UiButton
-                                children={<img className={this.state.hasChoiceCpu.rockChoice ? 'choice_border' : this.state.hasBluffCpu.rockBluff ? 'bluff_border' : ''} src={sasso} alt="" />}
 
+                                />
+                                <UiButton
+                                    children={<img className={this.state.hasChoiceCpu.lizardChoice ? 'choice_border' : this.state.hasBluffCpu.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
 
-                            />
-                            <UiButton
-                                children={<img className={this.state.hasChoiceCpu.lizardChoice ? 'choice_border' : this.state.hasBluffCpu.lizardBluff ? 'bluff_border' : ''} src={lizard} alt="" />}
+                                />
+                            </div>
+                            <div className="b3">
+                                <UiButton
+                                    children={<img className={this.state.hasChoiceCpu.spockChoice ? 'choice_border' : this.state.hasBluffCpu.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
 
-                            />
-                            <UiButton
-                                children={<img className={this.state.hasChoiceCpu.spockChoice ? 'choice_border' : this.state.hasBluffCpu.spockBluff ? 'bluff_border' : ''} src={spock} alt="" />}
-
-                            />
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
