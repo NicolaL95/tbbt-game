@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tbbt-game/static/css/main.556c32e9.css",
-    "main.js": "/tbbt-game/static/js/main.97fe3809.js",
+    "main.css": "/tbbt-game/static/css/main.60463ace.css",
+    "main.js": "/tbbt-game/static/js/main.e2c43687.js",
     "static/media/rule.mp4": "/tbbt-game/static/media/rule.823bbd4c70da1a32741a.mp4",
     "static/media/tbbt_bg_image.jpg": "/tbbt-game/static/media/tbbt_bg_image.afe1233dfd2ea3fe6e99.jpg",
     "static/media/geology_user.png": "/tbbt-game/static/media/geology_user.53e306e358a401f5f2c5.png",
@@ -26,11 +26,11 @@
     "static/media/gadget7.jpg": "/tbbt-game/static/media/gadget7.62beae37530bc39006a8.jpg",
     "static/media/TBBT_logo.svg": "/tbbt-game/static/media/TBBT_logo.08ec8a4a2b6f63935d569b7ada1b2f1b.svg",
     "index.html": "/tbbt-game/index.html",
-    "main.556c32e9.css.map": "/tbbt-game/static/css/main.556c32e9.css.map",
-    "main.97fe3809.js.map": "/tbbt-game/static/js/main.97fe3809.js.map"
+    "main.60463ace.css.map": "/tbbt-game/static/css/main.60463ace.css.map",
+    "main.e2c43687.js.map": "/tbbt-game/static/js/main.e2c43687.js.map"
   },
   "entrypoints": [
-    "static/css/main.556c32e9.css",
-    "static/js/main.97fe3809.js"
+    "static/css/main.60463ace.css",
+    "static/js/main.e2c43687.js"
   ]
 }
