@@ -17,10 +17,12 @@ function RuleGames(props) {
         <div id="rule_games">
             <h1>Ti ringraziamo per aver acquistato dal nostro shop!</h1>
             <div className="challenge">
+
                 <div className="challenge_text">
                     <h2>Sheldon vuole sfidarti al suo gioco preferito: Sasso-carta-forbici-lizard-Spock!</h2>
                     <h5> Se riuscirai a batterlo riceverai un regalo a sorpresa insieme al tuo ordine </h5>
                 </div>
+
 
                 <img src={sheldonImg}></img>
             </div>

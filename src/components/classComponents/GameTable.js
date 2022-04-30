@@ -33,7 +33,8 @@ class GameTable extends Component {
         super(props)
         this.timeToBluff = true;
         this.inProgress = true;
-
+        this.user_bluff = 0
+        this.cpu_bluff = 0
         this.state = {
             sNumOfGames: 0,
             sUserScore: 0,
@@ -73,7 +74,7 @@ class GameTable extends Component {
     }
 
     componentDidMount() {
-
+        localStorage.clear();
     }
 
     componentDidUpdate() {
@@ -87,10 +88,12 @@ class GameTable extends Component {
     // funzione play game 
     playGame = (user_score) => {
 
-        let cpu_bluff = Math.floor(Math.random() * 5);
+
         /* imposta gli stati che permettono l'aggiunta del bordo rosso o verde */
 
         if (this.timeToBluff) {
+            let cpu_score = Math.floor(Math.random() * 5);
+
             this.setState({
                 hasBluffPlayer: {
                     paperBluff: false,
@@ -163,7 +166,7 @@ class GameTable extends Component {
             }
 
 
-            switch (cpu_bluff) {
+            switch (cpu_score) {
                 case 0:
                     this.setState({
                         hasBluffCpu: {
@@ -200,7 +203,10 @@ class GameTable extends Component {
                     })
                     break;
             }
+            this.user_bluff = user_score;
             this.timeToBluff = false
+            this.cpu_bluff = cpu_score;
+            this.user_bluff = user_score;
 
 
         }
@@ -249,14 +255,15 @@ class GameTable extends Component {
 
             let userScore = localStorage.getItem("userScore")
             let cpuScore = localStorage.getItem("cpuScore")
-            let bluffWorks = localStorage.getItem("bluffWorks")
-            let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff")
+
 
             this.inProgress = false;
             /* Attiva la giocata definitiva dopo 2 secondi(Tempo della riproduzione dell'audio) */
             const timer = setTimeout(() => {
 
-                let cpu_score = sheldonIsTooSmartForYou(cpu_bluff, playerBeliveInBluff, bluffWorks, nOfGames, powerPlay(user_score))
+                let cpu_score =
+                    sheldonIsTooSmartForYou(this.cpu_bluff, this.user_bluff, localStorage.getItem("playerPlayBluff") == null ? 0 : parseInt(localStorage.getItem("playerPlayBluff")), localStorage.getItem("playerDontPlayBluff") == null ? 0 : parseInt(localStorage.getItem("playerDontPlayBluff")), localStorage.getItem("cpuPlayCounter") == null ? 0 : parseInt(localStorage.getItem("cpuPlayCounter")), localStorage.getItem("cpuHasCountered") == null ? 0 : parseInt(localStorage.getItem("cpuHasCountered")), localStorage.getItem("playerPlayCounter") == null ? 0 : parseInt(localStorage.getItem("playerPlayCounter")), localStorage.getItem("playerHasCountered") == null ? 0 : parseInt(localStorage.getItem("playerHasCountered")), powerPlay(user_score))
+
 
                 let result = calcMatch(user_score, cpu_score)
 
@@ -308,7 +315,7 @@ class GameTable extends Component {
                         break;
                 }
 
-                iaDecision(nOfGames, result.vinceUser, result.vinceCpu);
+                iaDecision(nOfGames, user_score, cpu_score, this.cpu_bluff, this.user_bluff);
                 this.timeToBluff = true;
                 this.setState({
                     sNumOfGames: nOfGames,

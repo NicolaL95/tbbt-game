@@ -248,42 +248,115 @@ function calcMatch(user_choice, cpu_score) {
 
 /* iaDecision imposta le variabili del localstorage  bluffWorks e playerBeliveInBluff in base all'andamento della partita.
 bluffWorks e playerBeliveInBluff istruiscono l'IA a compiere una scelta piuttosto che un altra. */
-function iaDecision(roundPlayed, playerWin, cpuWin) {
+function iaDecision(roundPlayed, playerChoice, cpuChoice, cpuBluff, playerBluff) {
 
-    let bluffWorksCounter = localStorage.getItem("bluffWorks") == null ? 0 : parseInt(localStorage.getItem("bluffWorks"));
-    let playerBeliveInBluff = localStorage.getItem("playerBeliveInBluff") == null ? 0 : parseInt(localStorage.getItem("playerBeliveInBluff"));
+    let casuistry = {
+        cpuBluffPlayerChoice: calcMatch(playerChoice, cpuBluff),
+        cpuChoicePlayerChoice: calcMatch(playerChoice, cpuChoice),
+        cpuChoicePlayerBluff: calcMatch(playerBluff, cpuChoice)
 
-    if (cpuWin == true) {
-        if (roundPlayed == 1 || (playerBeliveInBluff == 0 && bluffWorksCounter == 0)) {
-
-            bluffWorksCounter = bluffWorksCounter + 2
-
-        }
-        else {
-
-            bluffWorksCounter = bluffWorksCounter + 1
-
-        }
-        localStorage.setItem("bluffWorks", bluffWorksCounter)
-
-    } else if (playerWin == true) {
-        if (roundPlayed == 1 || (playerBeliveInBluff == 0 && bluffWorksCounter == 0)) {
-            playerBeliveInBluff = playerBeliveInBluff + 2
-        }
-        else {
-            playerBeliveInBluff = playerBeliveInBluff + 1
-        }
     }
-    localStorage.setItem("playerBeliveInBluff", playerBeliveInBluff)
+
+    let playerBeliveInBluffAndCounter = localStorage.getItem("playerBeliveInBluffAndCounter") == null ? 0 : parseInt(localStorage.getItem("playerBeliveInBluffAndCounter")) //avversario gioca counter al bluff
+
+    let playerPlayBluff = localStorage.getItem("playerPlayBluff") == null ? 0 : parseInt(localStorage.getItem("playerPlayBluff")) //avversario conferma il suo bluff
+
+    let playerDontPlayBluff = localStorage.getItem("playerDontPlayBluff") == null ? 0 : parseInt(localStorage.getItem("playerDontPlayBluff")) //avversaio non conferma il suo bluff
+
+    let cpuPlayCounter = localStorage.getItem("cpuPlayCounter") == null ? 0 : parseInt(localStorage.getItem("cpuPlayCounter"))//cpu gioca il counter del bluff
+    let cpuHasCountered = localStorage.getItem("cpuHasCountered") == null ? 0 : parseInt(localStorage.getItem("cpuHasCountered"))
+
+    let playerPlayCounter = localStorage.getItem("playerPlayCounter") == null ? 0 : parseInt(localStorage.getItem("playerPlayCounter"))//cpu gioca il counter del bluff
+    let playerHasCountered = localStorage.getItem("playerHasCountered") == null ? 0 : parseInt(localStorage.getItem("playerHasCountered"))
+
+
+    let isBeginMatch = false;
+
+
+
+    if (roundPlayed == 1 || (playerPlayBluff == 0 && playerDontPlayBluff == 0 && cpuPlayCounter == 0 && cpuHasCountered == 0 && playerPlayCounter == 0 && playerHasCountered == 0)) {
+        isBeginMatch = true;
+    }
+
+    //expeted result: giochi counter del counter del giocatore
+
+
+
+    if (playerChoice == playerBluff) {
+        if (isBeginMatch == true) {
+            playerPlayBluff = playerPlayBluff + 2
+        } else {
+            playerPlayBluff = playerPlayBluff + 1
+        }
+        localStorage.setItem("playerPlayBluff", playerPlayBluff)
+    }
+    //expeted result: giochi counter al bluff - 66% di giocare counter al bluff
+
+    //avversaio non conferma il suo bluff
+    else {
+        if (isBeginMatch == true) {
+            playerDontPlayBluff = playerDontPlayBluff + 2
+        } else {
+            playerDontPlayBluff = playerDontPlayBluff + 1
+        }
+        localStorage.setItem("playerDontPlayBluff", playerDontPlayBluff)
+    }
+    //expeted result: giochi tutto a parte il bluff - 33% di giocare counter al bluff
+
+
+    //cpu vince giocando il counter del bluff
+    if (casuistry.cpuBluffPlayerChoice.vinceUser && casuistry.cpuChoicePlayerChoice.vinceCpu) {
+        if (isBeginMatch == true) {
+            cpuPlayCounter = cpuPlayCounter + 2
+        } else {
+            cpuPlayCounter = cpuPlayCounter + 1
+        }
+        localStorage.setItem("cpuPlayCounter", cpuPlayCounter)
+    } else if (casuistry.cpuBluffPlayerChoice.vinceUser && casuistry.cpuChoicePlayerChoice.vinceUser) {
+        if (isBeginMatch == true) {
+            cpuHasCountered = cpuHasCountered + 2
+        } else {
+            cpuHasCountered = cpuHasCountered + 1
+        }
+        localStorage.setItem("cpuHasCountered", cpuHasCountered)
+    }
+
+    //player vince giocando il counter del bluff
+    if (casuistry.cpuChoicePlayerBluff.vinceUser && casuistry.cpuChoicePlayerChoice.vinceUser) {
+        if (isBeginMatch == true) {
+            playerPlayCounter = playerPlayCounter + 2
+        } else {
+            playerPlayCounter = playerPlayCounter + 1
+        }
+        localStorage.setItem("playerPlayCounter", playerPlayCounter)
+    } else if (casuistry.cpuChoicePlayerBluff.vinceUser && casuistry.cpuChoicePlayerChoice.vinceCpu) {
+        if (isBeginMatch == true) {
+            playerHasCountered = playerHasCountered + 2
+        } else {
+            playerHasCountered = playerHasCountered + 1
+        }
+        localStorage.setItem("playerHasCountered", playerHasCountered)
+    }
+
+
 }
-
-
 /* sheldonIsTooSmartForYou imposta il comportamento della cpu su una base probabilistica 
-utilizza rispettivamente i seguenti parametri: bluff della cpu, numero di volte in cui la cpu ha vinto e perso, round giocati e mosse che vincerebbero contro il bluff dell'avversario */
+utilizza rispettivamente i seguenti parametri: bluff della cpu, numero di volte in cui la cpu ha vinto e perso, round giocati e mosse che vincerebbero contro il bluff dell'avversario 
+utilizza due tipi di probabilita' per scegliere la mossa: 50% e 33%66%
+*/
 
-function sheldonIsTooSmartForYou(bluffChoice, playerBeliveInBluff, bluffWorks, roundPlayed, powerPlay) {
+function sheldonIsTooSmartForYou(cpuBluffCalc, playerBluffCalc, playerPlayBluff, playerDontPlayBluff, cpuPlayCounter, cpuHasCountered, playerPlayCounter, playerHasCountered, powerPlayV) {
 
-    let finalChoice = null;
+    let finalChoice = Math.floor(Math.random() * 5);
+
+    let notBluff = Math.floor(Math.random() * 5);
+
+    //Ottiene un id(associato ad una giocata, diverso dal bluff) 
+
+    while (notBluff !== cpuBluffCalc) {
+        notBluff = Math.floor(Math.random() * 5);
+    }
+
 
     let randomChoice = {
         randomChoice1: Math.floor(Math.random() * 12),
@@ -291,23 +364,15 @@ function sheldonIsTooSmartForYou(bluffChoice, playerBeliveInBluff, bluffWorks, r
     }
 
     let randomHalf = Math.random();
-    let notBluff = Math.floor(Math.random() * 5);
-
-    /* Ottiene un id(associato ad una giocata, diverso dal bluff) */
-
-    while (notBluff != bluffChoice) {
-        notBluff = Math.floor(Math.random() * 5);
-    }
-
-    /* imposta la scelta come una delle due(scelte randomicamente) giocate che vincerebbero contro il buff dell'avversario */
+    let randomHalf2 = Math.random();
 
     function smarterThanYou() {
         if (randomChoice.randomChoice2 > 3) {
             if (randomHalf < 0.5) {
-                finalChoice = powerPlay[0]
+                finalChoice = powerPlayV[0]
             }
             else {
-                finalChoice = powerPlay[1]
+                finalChoice = powerPlayV[1]
             }
 
         } else {
@@ -315,30 +380,59 @@ function sheldonIsTooSmartForYou(bluffChoice, playerBeliveInBluff, bluffWorks, r
         }
     }
 
-    /* Utilizza una base di probabilita' basata sul 50% oppure sul 33%/66% */
-    if (roundPlayed == 1 || playerBeliveInBluff == bluffWorks) {
-        if (randomChoice.randomChoice1 > 5) {
-            finalChoice = bluffChoice
-        } else {
+
+
+    if (playerPlayBluff > playerDontPlayBluff) {
+        //avversario conferma il suo bluff
+        if (randomChoice.randomChoice1 > 3) {
             smarterThanYou();
         }
-    } else if (bluffWorks > playerBeliveInBluff) {
-        if (randomChoice.randomChoice1 > 3) {
-            finalChoice = bluffChoice
-        } else {
-            smarterThanYou();
+        else {
+            finalChoice = notBluff
         }
     } else {
-        if (randomChoice > 3) {
+        if (randomChoice.randomChoice1 > 3) {
+            //avversario non conferma il suo bluff
+            finalChoice = notBluff
+        }
+        else {
             smarterThanYou();
+        }
+    }
 
-        } else {
-            finalChoice = bluffChoice
+
+    if (cpuPlayCounter + cpuHasCountered > playerPlayCounter + playerHasCountered) {
+        if (randomHalf2 < 0.5) {
+            finalChoice = BluffCalc(cpuBluffCalc, cpuPlayCounter, cpuHasCountered)
+        }
+
+    }
+    else {
+        if (randomHalf2 < 0.5) {
+            finalChoice = BluffCalc(playerBluffCalc, playerPlayCounter, playerHasCountered)
         }
     }
     return finalChoice
 
 }
+
+function BluffCalc(bluffMove, playCounter, hasCountered) {
+    //cpu vince giocando il counter del bluff
+    /* Ottiene le due giocate che vincerebbero contro il bluff dell'avversario */
+    let possiblePlays = powerPlay(bluffMove)
+    let diramatedPlays = [powerPlay(possiblePlays[0]), powerPlay(possiblePlays[1])]
+    const filteredArray = diramatedPlays[0].filter(value => diramatedPlays[1].includes(value));
+    if (playCounter > hasCountered) {
+        return filteredArray[0]
+    }
+    else {
+        let possibleCounter = powerPlay(filteredArray[0])
+        let diramatedPlaysC = [powerPlay(possibleCounter[0]), powerPlay(possibleCounter[1])]
+        const filteredArrayC = diramatedPlaysC[0].filter(value => diramatedPlaysC[1].includes(value));
+        return filteredArrayC[0]
+    }
+}
+
 /* Ottiene le due giocate che vincerebbero contro il bluff dell'avversario */
 function powerPlay(bluff) {
     let winningpPlay = []
@@ -352,6 +446,7 @@ function powerPlay(bluff) {
     return winningpPlay;
 
 }
+
 
 
 export { calcMatch, iaDecision, sheldonIsTooSmartForYou, powerPlay, gadgets }

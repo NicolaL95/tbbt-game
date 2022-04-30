@@ -23,6 +23,8 @@
     justify-content: space-between;
     border-top-right-radius: 32px;
     border-top-left-radius: 32px;
+        border-top-left-radius: 32px;
+        flex-direction: column;
 }
 #rule_games .challenge .challenge_text{
     width: 60%;
@@ -32,7 +34,7 @@
 #rule_games .challenge img{
     width: 30%;
     height: auto;
-    border-top-right-radius: 32px;
+    border-radius: 25px;
 }
 
 #question_challenge{
@@ -61,9 +63,10 @@
     justify-content: space-between;
     padding: 32px;
     background-color: rgb(88, 88, 196);
-    margin: 32px 0 ;
+    margin: 32px auto;
     color: white;
     flex-wrap: wrap;
+    width: 70%;
 }
 .explane_rule video{
     margin-top: 16px;
@@ -71,7 +74,6 @@
 }
 .explane_rule img{
     margin-top: 30px;
-    width: 40%;
 }
 .explane_rule .paragr{
     width: 50%;
