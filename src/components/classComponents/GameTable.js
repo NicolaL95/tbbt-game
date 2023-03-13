@@ -342,7 +342,7 @@ class GameTable extends Component {
             }, 1000)
 
         }
-
+        
         if ((localStorage.getItem('userScore')) > 4 || (localStorage.getItem('cpuScore')) > 4) {
             return true
         }
@@ -509,7 +509,7 @@ class GameTable extends Component {
         }
 
     }
-
+    
     // funzione render vita cpu dinamica 
     calcLifeCpu = () => {
         if (localStorage.getItem("userScore") == null) {
@@ -560,7 +560,7 @@ class GameTable extends Component {
         } else if (localStorage.getItem("cpuScore") == 5) {
             return <div className="loseGame">
 
-                <a onClick={this.restart} href="https://nicolal95.github.io/tbbt-game/" >Riprova !</a>
+                <a onClick={this.restart} href="http://localhost:3000/">Riprova !</a>
 
             </div>
         }
